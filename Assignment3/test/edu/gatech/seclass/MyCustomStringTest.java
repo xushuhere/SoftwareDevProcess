@@ -37,7 +37,7 @@ public class MyCustomStringTest {
     }
 
     // This test checks whether the method countNumbers suitably count the numbers of
-    // the string containing numbers or space (no letters)
+    // the string containing numbers or space (no letters).
     @Test
     public void testCountNumbers3() {
         mycustomstring.setString("14 134 567");
@@ -45,7 +45,7 @@ public class MyCustomStringTest {
     }
 
     // This test checks whether method countNumbers suitably throwing the exception
-    // when a null string is given in the test
+    // when a null string is given in the test.
     @Test(expected = NullPointerException.class)
     public void testCountNumbers4() {
         mycustomstring.setString(null);
@@ -53,14 +53,14 @@ public class MyCustomStringTest {
     }
 
     // This test checks whether method countNumbers suitably throwing the exception
-    // when non string is given in the test (MyCustomString will give a null)
+    // when non string is given in the test (MyCustomString will give a null).
     @Test(expected = NullPointerException.class)
     public void testCountNumbers5() {
         mycustomstring.countNumbers();
     }
 
     // This test checks whether method countNumbers suitably give the expected value 0
-    // when an empty string is given in the test
+    // when an empty string is given in the test.
     @Test
     public void testCountNumbers6() {
         mycustomstring.setString("");

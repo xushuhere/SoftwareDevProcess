@@ -15,7 +15,7 @@ public class MyCustomString implements MyCustomStringInterface {
     private static final String My_Index_Out_Of_Bounds_Exception = "Input index is out of the bounds ";
 
     // set the current string variable as currentString
-    private String currentString;
+    private String mycurrentString;
 
     /**
      * Sets the value of the current string.
@@ -23,7 +23,7 @@ public class MyCustomString implements MyCustomStringInterface {
      * @param 'string' The value to be set
      */
     public void setString(String str) {
-        currentString = str;
+        mycurrentString = str;
     }
 
     /**
@@ -32,7 +32,7 @@ public class MyCustomString implements MyCustomStringInterface {
      * @return Current string
      */
     public String getString() {
-        return currentString;
+        return mycurrentString;
     }
 
 
@@ -53,13 +53,13 @@ public class MyCustomString implements MyCustomStringInterface {
         Boolean newNum = true;
 
         //if the string value is null then return NullPointerException
-        if (currentString == null) {
+        if (mycurrentString == null) {
             throw new NullPointerException(NULL_STRING_EXCEPTION);
         }
         //If the string is empty then do nothing
-        else if (currentString.length() > 0) {
-            char[] currentCharArray = currentString.toCharArray();
-            for (int i = 0; i < currentString.length(); i++) {
+        else if (mycurrentString.length() > 0) {
+            char[] currentCharArray = mycurrentString.toCharArray();
+            for (int i = 0; i < mycurrentString.length(); i++) {
                 String currentChar = String.valueOf(currentCharArray[i]);
                 if (currentChar.equals("0") || currentChar.equals("1")
                         || currentChar.equals("2") || currentChar.equals("3")
@@ -108,12 +108,12 @@ public class MyCustomString implements MyCustomStringInterface {
         if (n <= 0){
             throw new IllegalArgumentException(Illegal_Argument_Exception);
         }
-        else if (currentString == null) {
+        else if (mycurrentString == null) {
             throw new NullPointerException(NULL_STRING_EXCEPTION);
         }
-        else if (currentString.length() > 0) {
-            char[] currentCharArray = currentString.toCharArray();
-            int length = currentString.length();
+        else if (mycurrentString.length() > 0) {
+            char[] currentCharArray = mycurrentString.toCharArray();
+            int length = mycurrentString.length();
             if (!startFromEnd){
                 for (int i = n; i < length + 1; i+= n) {
                     resString += Character.toString(currentCharArray[i-1]);
@@ -156,17 +156,17 @@ public class MyCustomString implements MyCustomStringInterface {
         if (startPosition > endPosition){
             throw new IllegalArgumentException(Illegal_Argument_Exception);
         }
-        else if (startPosition < 1 || endPosition > currentString.length() ){
+        else if (startPosition < 1 || endPosition > mycurrentString.length() ){
             throw new MyIndexOutOfBoundsException(My_Index_Out_Of_Bounds_Exception);
 
         }
-        else if (startPosition <= endPosition && startPosition > 0 && currentString == null) {
+        else if (startPosition <= endPosition && startPosition > 0 && mycurrentString == null) {
             throw new NullPointerException(NULL_STRING_EXCEPTION);
         }
         else{
-            String leftString = currentString.substring(0, startPosition-1);
-            String workString = currentString.substring(startPosition-1, endPosition);
-            String rightString = currentString.substring(endPosition,currentString.length());
+            String leftString = mycurrentString.substring(0, startPosition-1);
+            String workString = mycurrentString.substring(startPosition-1, endPosition);
+            String rightString = mycurrentString.substring(endPosition,mycurrentString.length());
             workString = workString.replaceAll("1", "One");
             workString = workString.replaceAll("2", "Two");
             workString = workString.replaceAll("3", "Three");
@@ -177,7 +177,7 @@ public class MyCustomString implements MyCustomStringInterface {
             workString = workString.replaceAll("8", "Eight");
             workString = workString.replaceAll("9", "Nine");
             workString = workString.replaceAll("0", "Zero");
-            this.currentString = leftString + workString + rightString;;
+            this.mycurrentString = leftString + workString + rightString;;
             }
         }
 
