@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7de71e16-bff3-4b14-83ad-bcb91999cef7" name="Default" comment="" />
+    <list default="true" id="7de71e16-bff3-4b14-83ad-bcb91999cef7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="Assignment3.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,8 +27,8 @@
       <file leaf-file-name="MyCustomStringTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="195">
+              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,10 +39,11 @@
       <file leaf-file-name="MyCustomString.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomString.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="117" column="56" selection-start-line="117" selection-start-column="56" selection-end-line="117" selection-end-column="56" />
+            <state relative-caret-position="1920">
+              <caret line="183" column="1" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
               <folding>
-                <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+                <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+                <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -720,17 +723,11 @@
       <workItem from="1473130747342" duration="7483000" />
       <workItem from="1473185037405" duration="79000" />
       <workItem from="1473185165267" duration="9419000" />
-      <workItem from="1473217943845" duration="85000" />
+      <workItem from="1473217943845" duration="609000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MyCustomStringTest - 2016.09.06 at 17h 14m 23s.xml">
-      <configuration name="MyCustomStringTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyCustomStringTest - 2016.09.06 at 17h 16m 00s.xml">
-      <configuration name="MyCustomStringTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MyCustomStringTest - 2016.09.06 at 21h 46m 55s.xml">
       <configuration name="MyCustomStringTest" configurationId="JUnit" />
     </history-entry>
@@ -755,9 +752,15 @@
     <history-entry file="MyCustomStringTest - 2016.09.06 at 22h 13m 29s.xml">
       <configuration name="MyCustomStringTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MyCustomStringTest - 2016.09.06 at 22h 17m 27s.xml">
+      <configuration name="MyCustomStringTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyCustomStringTest - 2016.09.06 at 22h 55m 46s.xml">
+      <configuration name="MyCustomStringTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17066000" />
+    <option name="totallyTimeSpent" value="17590000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="19" y="23" width="1440" height="833" extended-state="0" />
@@ -770,7 +773,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928476" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928476" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928476" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -815,7 +818,8 @@
         <state relative-caret-position="1695">
           <caret line="117" column="56" selection-start-line="117" selection-start-column="56" selection-end-line="117" selection-end-column="56" />
           <folding>
-            <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+            <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -843,7 +847,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+            <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -853,7 +858,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+            <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -866,16 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="117" column="56" selection-start-line="117" selection-start-column="56" selection-end-line="117" selection-end-column="56" />
-          <folding>
-            <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomStringInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -884,10 +880,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1920">
+          <caret line="183" column="1" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
+          <folding>
+            <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="195">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
