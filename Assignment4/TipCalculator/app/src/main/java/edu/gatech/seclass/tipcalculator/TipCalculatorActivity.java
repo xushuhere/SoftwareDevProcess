@@ -38,8 +38,8 @@ public class TipCalculatorActivity extends AppCompatActivity {
     private static String tipValue(String ckAmountValue, String ptSizeValue, double tipRate){
         double checkAmount = Double.parseDouble(ckAmountValue);
         double partySize = Double.parseDouble(ptSizeValue);
-        double tipValue = checkAmount/partySize * tipRate;
-        return String.valueOf(tipValue);
+        int result = (int)Math.round(checkAmount/partySize * tipRate);
+        return String.valueOf(result);
     }
 
     private static String totalValue(String ckAmountValue, String ptSizeValue, double tipRate){
@@ -55,7 +55,36 @@ public class TipCalculatorActivity extends AppCompatActivity {
                 // calculate values for '''
                 String amount = checkAmountV.getText().toString();
                 String partySize = partySizeV.getText().toString();
-                if (Double.parseDouble(amount) > 0 && Integer.parseInt(partySize) > 0){
+                if (partySize == null ||  amount== null || partySize == "" ||  amount== "") {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Empty or incorrect value(s)!";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context,text,duration);
+                    toast.show();
+                    break;
+                }
+                if (!amount.endsWith(".") && amount.contains(".")) {
+                    String numberAfterDecimal = amount.split("\\.")[1];
+                    if (numberAfterDecimal.length() > 2) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Empty or incorrect value(s)!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                        break;
+                    }
+                }
+                if (partySize.contains(".")  ) {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Empty or incorrect value(s)!";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context,text,duration);
+                    toast.show();
+                    break;
+                    }
+
+
+                else {
                     fifteenPercentTipV.setText(tipValue(amount,partySize,0.15));
                     twentyPercentTipV.setText(tipValue(amount,partySize,0.20));
                     twentyfivePercentTipV.setText(tipValue(amount,partySize,0.25));
@@ -63,13 +92,7 @@ public class TipCalculatorActivity extends AppCompatActivity {
                     twentyPercentTotalV.setText(totalValue(amount,partySize,0.20));
                     twentyfivePercentTotalV.setText(totalValue(amount,partySize,0.25));
                 }
-                else{
-                    Context context = getApplicationContext();
-                    CharSequence text = "Empty or incorrect value(s)!";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context,text,duration);
-                    toast.show();
-                }
+
                 break;
 
             case R.id.buttonReset:
