@@ -44,7 +44,7 @@ public class TipCalculatorActivity extends AppCompatActivity {
 
     private static String totalValue(String ckAmountValue, String ptSizeValue, double tipRate){
         double checkAmount = Double.parseDouble(ckAmountValue);
-        double partySize = Double.parseDouble(ptSizeValue);
+        int partySize = Integer.parseInt(ptSizeValue);
         double totalValue = checkAmount/partySize + checkAmount/partySize * tipRate;
         return String.valueOf(totalValue);
     }
@@ -54,7 +54,7 @@ public class TipCalculatorActivity extends AppCompatActivity {
             case R.id.buttonCompute:
                 // calculate values for '''
                 String amount = checkAmountV.getText().toString();
-                String partySize = checkAmountV.getText().toString();
+                String partySize = partySizeV.getText().toString();
                 if (Double.parseDouble(amount) > 0 && Integer.parseInt(partySize) > 0){
                     fifteenPercentTipV.setText(tipValue(amount,partySize,0.15));
                     twentyPercentTipV.setText(tipValue(amount,partySize,0.20));
@@ -65,7 +65,7 @@ public class TipCalculatorActivity extends AppCompatActivity {
                 }
                 else{
                     Context context = getApplicationContext();
-                    CharSequence text = "Empty or incorrent value(s)!";
+                    CharSequence text = "Empty or incorrect value(s)!";
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context,text,duration);
                     toast.show();
