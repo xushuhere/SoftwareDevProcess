@@ -1,7 +1,7 @@
 package edu.gatech.seclass.tipcalculator;
 
 import android.content.Context;
-import android.icu.text.DecimalFormat;
+//import android.icu.text.DecimalFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,105 +10,81 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class TipCalculatorActivity extends AppCompatActivity {
-    private EditText checkAmountValue;
-    private EditText partySizeValue;
-
-    private EditText fifteenPercentTipValue;
-    private EditText twentyPercentTipValue;
-    private EditText twentyfivePercentTipValue;
-
-    private EditText twentyPercentTotalValue;
-    private EditText twentyfivePercentTotalValue;
-    private EditText fifteenPercentTotalValue;
+    EditText checkAmountV, partySizeV;
+    EditText twentyPercentTipV, twentyfivePercentTipV, fifteenPercentTipV;
+    EditText twentyPercentTotalV,twentyfivePercentTotalV, fifteenPercentTotalV;
+    Button btCompute, btReset;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip_calculator);
-        checkAmountValue= (EditText) findViewById(R.id.checkAmountValue);
-        partySizeValue= (EditText) findViewById(R.id.partySizeValue);
+        checkAmountV = (EditText) findViewById(R.id.checkAmountValue);
+        partySizeV = (EditText) findViewById(R.id.partySizeValue);
 
-        fifteenPercentTipValue= (EditText) findViewById(R.id.fifteenPercentTipValue);
-        twentyPercentTipValue= (EditText) findViewById(R.id.twentyPercentTipValue);
-        twentyfivePercentTipValue= (EditText) findViewById(R.id.twentyfivePercentTipValue);
+        fifteenPercentTipV = (EditText) findViewById(R.id.fifteenPercentTipValue);
+        twentyPercentTipV = (EditText) findViewById(R.id.twentyPercentTipValue);
+        twentyfivePercentTipV = (EditText) findViewById(R.id.twentyfivePercentTipValue);
 
-
-        twentyPercentTotalValue= (EditText) findViewById(R.id.twentyPercentTotalValue);
-        twentyfivePercentTotalValue= (EditText) findViewById(R.id.twentyfivePercentTotalValue);
-        fifteenPercentTotalValue= (EditText) findViewById(R.id.fifteenPercentTotalValue);
+        twentyPercentTotalV = (EditText) findViewById(R.id.twentyPercentTotalValue);
+        twentyfivePercentTotalV = (EditText) findViewById(R.id.twentyfivePercentTotalValue);
+        fifteenPercentTotalV = (EditText) findViewById(R.id.fifteenPercentTotalValue);
+        btCompute = (Button) findViewById(R.id.buttonCompute);
+        btReset = (Button) findViewById(R.id.buttonReset);
     }
 
 
-
-
-    private static String tipvalue(String checkAmountValue, String partySizeValue, double tipRate){
-        double checkAmount = Double.parseDouble(checkAmountValue);
-        double partySize = Double.parseDouble(partySizeValue);
-        int tipValue = (int)Math.floor(checkAmount/partySize * tipRate);
+    private static String tipValue(String ckAmountValue, String ptSizeValue, double tipRate){
+        double checkAmount = Double.parseDouble(ckAmountValue);
+        double partySize = Double.parseDouble(ptSizeValue);
+        double tipValue = checkAmount/partySize * tipRate;
         return String.valueOf(tipValue);
     }
 
-    private static String totalValue(String checkAmountValue, String partySizeValue, double tipRate){
-        double checkAmount = Double.parseDouble(checkAmountValue);
-        double partySize = Double.parseDouble(partySizeValue);
-        double totalValue = checkAmount/partySize + Math.round(checkAmount/partySize * tipRate);
-        return String.format("%.2f", String.valueOf(totalValue));
+    private static String totalValue(String ckAmountValue, String ptSizeValue, double tipRate){
+        double checkAmount = Double.parseDouble(ckAmountValue);
+        double partySize = Double.parseDouble(ptSizeValue);
+        double totalValue = checkAmount/partySize + checkAmount/partySize * tipRate;
+        return String.valueOf(totalValue);
     }
 
-    public void handleClick(View view){
-        switch (view.getId()){
+    public void handleClick(View v){
+        switch (v.getId()){
             case R.id.buttonCompute:
                 // calculate values for '''
-                String amount = checkAmountValue.getText().toString();
-                String partySize = checkAmountValue.getText().toString();
-                if (android.text.TextUtils.isDigitsOnly(amount) && android.text.TextUtils.isDigitsOnly(partySize)
-                        && Double.parseDouble(partySize) != 0.0 ){
-                    fifteenPercentTipValue.setText(tipvalue(amount,partySize,0.15));
-                    twentyPercentTipValue.setText(tipvalue(amount,partySize,0.20));
-                    twentyfivePercentTipValue.setText(tipvalue(amount,partySize,0.25));
-                    fifteenPercentTotalValue.setText(totalValue(amount,partySize,0.15));
-                    twentyPercentTotalValue.setText(totalValue(amount,partySize,0.20));
-                    twentyfivePercentTotalValue.setText(totalValue(amount,partySize,0.25));
+                String amount = checkAmountV.getText().toString();
+                String partySize = checkAmountV.getText().toString();
+                if (Double.parseDouble(amount) > 0 && Integer.parseInt(partySize) > 0){
+                    fifteenPercentTipV.setText(tipValue(amount,partySize,0.15));
+                    twentyPercentTipV.setText(tipValue(amount,partySize,0.20));
+                    twentyfivePercentTipV.setText(tipValue(amount,partySize,0.25));
+                    fifteenPercentTotalV.setText(totalValue(amount,partySize,0.15));
+                    twentyPercentTotalV.setText(totalValue(amount,partySize,0.20));
+                    twentyfivePercentTotalV.setText(totalValue(amount,partySize,0.25));
                 }
                 else{
-                    Context context =getApplicationContext();
+                    Context context = getApplicationContext();
                     CharSequence text = "Empty or incorrent value(s)!";
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context,text,duration);
                     toast.show();
                 }
+                break;
 
-                checkAmountValue.setText("");
-                partySizeValue.setText("");
-                fifteenPercentTipValue.setText("");
-                twentyPercentTipValue.setText("");
-                twentyfivePercentTipValue.setText("");
-                twentyPercentTotalValue.setText("");
-                twentyfivePercentTotalValue.setText("");
-                fifteenPercentTotalValue.setText("");
             case R.id.buttonReset:
                 //set all text values back to ""
-                checkAmountValue.setText("");
-                partySizeValue.setText("");
-                fifteenPercentTipValue.setText("");
-                twentyPercentTipValue.setText("");
-                twentyfivePercentTipValue.setText("");
-                twentyPercentTotalValue.setText("");
-                twentyfivePercentTotalValue.setText("");
-                fifteenPercentTotalValue.setText("");
+                checkAmountV.setText("");
+                partySizeV.setText("");
+                fifteenPercentTipV.setText("");
+                twentyPercentTipV.setText("");
+                twentyfivePercentTipV.setText("");
+                twentyPercentTotalV.setText("");
+                twentyfivePercentTotalV.setText("");
+                fifteenPercentTotalV.setText("");
                 break;
 
         }
 
     }
-
-
-
-    //private float checkAmountValue(){}
-    //private float checkAmountValue(){}
-    //private float checkAmountValue(){}
-    // private float checkAmountValue(){}
-    // private float checkAmountValue(){}
-    // private float checkAmountValue(){}
 }
