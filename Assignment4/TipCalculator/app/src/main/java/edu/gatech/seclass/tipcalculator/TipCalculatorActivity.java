@@ -1,7 +1,6 @@
 package edu.gatech.seclass.tipcalculator;
 
 import android.content.Context;
-import android.icu.text.DecimalFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
