@@ -1,7 +1,7 @@
 package edu.gatech.seclass.tipcalculator;
 
 import android.content.Context;
-//import android.icu.text.DecimalFormat;
+import android.icu.text.DecimalFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,8 +45,10 @@ public class TipCalculatorActivity extends AppCompatActivity {
     private static String totalValue(String ckAmountValue, String ptSizeValue, double tipRate){
         double checkAmount = Double.parseDouble(ckAmountValue);
         int partySize = Integer.parseInt(ptSizeValue);
-        double totalValue = checkAmount/partySize + checkAmount/partySize * tipRate;
-        return String.valueOf(totalValue);
+        double tip = Math.round(checkAmount/partySize * tipRate);
+        double totalValue = checkAmount/partySize + tip;
+        double result = Math.round(totalValue*100)/100.0;
+        return String.valueOf(result);
     }
 
     public void handleClick(View v){
@@ -55,7 +57,8 @@ public class TipCalculatorActivity extends AppCompatActivity {
                 // calculate values for '''
                 String amount = checkAmountV.getText().toString();
                 String partySize = partySizeV.getText().toString();
-                if (partySize == null ||  amount== null || partySize == "" ||  amount== "") {
+
+                if(amount.trim().equals("") && partySize.trim().equals("") ) {
                     Context context = getApplicationContext();
                     CharSequence text = "Empty or incorrect value(s)!";
                     int duration = Toast.LENGTH_SHORT;
@@ -74,7 +77,7 @@ public class TipCalculatorActivity extends AppCompatActivity {
                         break;
                     }
                 }
-                if (partySize.contains(".")  ) {
+                if (partySize.contains(".") ||Double.parseDouble(partySize) == 0  ) {
                     Context context = getApplicationContext();
                     CharSequence text = "Empty or incorrect value(s)!";
                     int duration = Toast.LENGTH_SHORT;
@@ -91,6 +94,7 @@ public class TipCalculatorActivity extends AppCompatActivity {
                     fifteenPercentTotalV.setText(totalValue(amount,partySize,0.15));
                     twentyPercentTotalV.setText(totalValue(amount,partySize,0.20));
                     twentyfivePercentTotalV.setText(totalValue(amount,partySize,0.25));
+
                 }
 
                 break;
