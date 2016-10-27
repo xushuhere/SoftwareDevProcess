@@ -2,17 +2,18 @@
 # Written by Shu Xu, shu.xu@gatech.edu
 
 # Options
-Options size:
+Options Size:
 	Empty.		[property defaultOPT]
 	Not Empty.
-Options:
-	-b.		[if !defaultOPT][property backupFile]
-	-f.            	[if !defaultOPT][property findFirstLine]
-	-l.            	[if !defaultOPT][property findLastLine]
-	-i.            	[if !defaultOPT][property caseInsensitive]
-	improper value.	[if !defaultOPT][error]
+	Improper Value.	[error]
 
-# from string
+Number of Options:
+	1(eg -b).		[if !defaultOPT][property backupFile]
+	2(eg -b -l).            [if !defaultOPT][property findFirstLine]
+	3(eg -b -f -l).         [if !defaultOPT][property findLastLine]
+	4(eg -b -f -l -i).      [if !defaultOPT][property caseInsensitive]
+
+# From string
 From String Size:
 	Empty.		[error] 
 	Not Empty. 	[property notEmptyFrom]
@@ -22,6 +23,7 @@ From String Quoting:
 	Quoted Not Empty.	[if notEmptyFrom]
 	Quoted empty.		[error][if notEmptyFrom]
 	Improperly Quoted.	[error][if notEmptyFrom]
+
 
 # To string
 To String Size:
