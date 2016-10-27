@@ -1,0 +1,59 @@
+# This the category partitions for replace Utility for the assignment 6 Category partition method for testing.
+# Written by Shu Xu, shu.xu@gatech.edu
+
+# Options
+Options size:
+	Empty.		[property defaultOPT]
+	Not Empty.
+Options:
+	-b.		[if !defaultOPT][property backupFile]
+	-f.            	[if !defaultOPT][property findFirstLine]
+	-l.            	[if !defaultOPT][property findLastLine]
+	-i.            	[if !defaultOPT][property caseInsensitive]
+	improper value.	[if !defaultOPT][error]
+
+# from string
+From String Size:
+	Empty.		[error] 
+	Not Empty. 	[property notEmptyFrom]
+
+From String Quoting:
+	Not Quoted.		[if notEmptyFrom]
+	Quoted Not Empty.	[if notEmptyFrom]
+	Quoted empty.		[error][if notEmptyFrom]
+	Improperly Quoted.	[error][if notEmptyFrom]
+
+# To string
+To String Size:
+	Empty.		[error]
+	Not Empty. 		[property notEmptyTo]
+
+From String Quoting:
+	Not Quoted.		[if notEmptyTo]
+	Quoted.			[if notEmptyTo]
+	Improperly Quoted.	[error][if notEmptyTo]
+
+
+# Filename
+
+File(s) Size:
+	0.		[error][property emptyFile]	
+	1.		[property oneFile]
+	>1.		[property listFile]
+
+File(s) Presence:
+	One Or More Files Not Present.	[error]	[if !emptyFile]
+	File(s) Not Present.	[if !emptyFile][property existFile]
+
+
+File(s) Accessibility:
+	File(s) Readable and Writable.	[if existFile][property existFileWR]
+	Some or All Not Readable or Writable. 	[error][if existFile && listFile]
+	The File Not Readable or Writable.	[error][if existFile && oneFile]
+
+
+# Lines of replacement
+Number of Replacement:
+	0.		[if existFileWR]	
+	>=1.		[if existFileWR]
+
