@@ -4,7 +4,7 @@
 # Options
 Options Size:
 	Empty.		[property defaultOPT]
-	Not Empty.
+	Valid Input.
 	Improper Value.	[error]
 
 Number of Options:

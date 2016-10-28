@@ -248,7 +248,7 @@ Test Case 26 		(Key = 1.0.2.2.2.2.3.2.1.2.)
 
 
 Test Case 27 		(Key = 2.1.2.1.2.1.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -261,7 +261,7 @@ Test Case 27 		(Key = 2.1.2.1.2.1.2.2.1.1.)
 
 
 Test Case 28 		(Key = 2.1.2.1.2.1.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -274,7 +274,7 @@ Test Case 28 		(Key = 2.1.2.1.2.1.2.2.1.2.)
 
 
 Test Case 29 		(Key = 2.1.2.1.2.1.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -287,7 +287,7 @@ Test Case 29 		(Key = 2.1.2.1.2.1.3.2.1.1.)
 
 
 Test Case 30 		(Key = 2.1.2.1.2.1.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -300,7 +300,7 @@ Test Case 30 		(Key = 2.1.2.1.2.1.3.2.1.2.)
 
 
 Test Case 31 		(Key = 2.1.2.1.2.2.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -313,7 +313,7 @@ Test Case 31 		(Key = 2.1.2.1.2.2.2.2.1.1.)
 
 
 Test Case 32 		(Key = 2.1.2.1.2.2.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -326,7 +326,7 @@ Test Case 32 		(Key = 2.1.2.1.2.2.2.2.1.2.)
 
 
 Test Case 33 		(Key = 2.1.2.1.2.2.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -339,7 +339,7 @@ Test Case 33 		(Key = 2.1.2.1.2.2.3.2.1.1.)
 
 
 Test Case 34 		(Key = 2.1.2.1.2.2.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -352,7 +352,7 @@ Test Case 34 		(Key = 2.1.2.1.2.2.3.2.1.2.)
 
 
 Test Case 35 		(Key = 2.1.2.2.2.1.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -365,7 +365,7 @@ Test Case 35 		(Key = 2.1.2.2.2.1.2.2.1.1.)
 
 
 Test Case 36 		(Key = 2.1.2.2.2.1.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -378,7 +378,7 @@ Test Case 36 		(Key = 2.1.2.2.2.1.2.2.1.2.)
 
 
 Test Case 37 		(Key = 2.1.2.2.2.1.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -391,7 +391,7 @@ Test Case 37 		(Key = 2.1.2.2.2.1.3.2.1.1.)
 
 
 Test Case 38 		(Key = 2.1.2.2.2.1.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -404,7 +404,7 @@ Test Case 38 		(Key = 2.1.2.2.2.1.3.2.1.2.)
 
 
 Test Case 39 		(Key = 2.1.2.2.2.2.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -417,7 +417,7 @@ Test Case 39 		(Key = 2.1.2.2.2.2.2.2.1.1.)
 
 
 Test Case 40 		(Key = 2.1.2.2.2.2.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -430,7 +430,7 @@ Test Case 40 		(Key = 2.1.2.2.2.2.2.2.1.2.)
 
 
 Test Case 41 		(Key = 2.1.2.2.2.2.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -443,7 +443,7 @@ Test Case 41 		(Key = 2.1.2.2.2.2.3.2.1.1.)
 
 
 Test Case 42 		(Key = 2.1.2.2.2.2.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  1(eg -b)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -456,7 +456,7 @@ Test Case 42 		(Key = 2.1.2.2.2.2.3.2.1.2.)
 
 
 Test Case 43 		(Key = 2.2.2.1.2.1.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -469,7 +469,7 @@ Test Case 43 		(Key = 2.2.2.1.2.1.2.2.1.1.)
 
 
 Test Case 44 		(Key = 2.2.2.1.2.1.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -482,7 +482,7 @@ Test Case 44 		(Key = 2.2.2.1.2.1.2.2.1.2.)
 
 
 Test Case 45 		(Key = 2.2.2.1.2.1.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -495,7 +495,7 @@ Test Case 45 		(Key = 2.2.2.1.2.1.3.2.1.1.)
 
 
 Test Case 46 		(Key = 2.2.2.1.2.1.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -508,7 +508,7 @@ Test Case 46 		(Key = 2.2.2.1.2.1.3.2.1.2.)
 
 
 Test Case 47 		(Key = 2.2.2.1.2.2.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -521,7 +521,7 @@ Test Case 47 		(Key = 2.2.2.1.2.2.2.2.1.1.)
 
 
 Test Case 48 		(Key = 2.2.2.1.2.2.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -534,7 +534,7 @@ Test Case 48 		(Key = 2.2.2.1.2.2.2.2.1.2.)
 
 
 Test Case 49 		(Key = 2.2.2.1.2.2.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -547,7 +547,7 @@ Test Case 49 		(Key = 2.2.2.1.2.2.3.2.1.1.)
 
 
 Test Case 50 		(Key = 2.2.2.1.2.2.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -560,7 +560,7 @@ Test Case 50 		(Key = 2.2.2.1.2.2.3.2.1.2.)
 
 
 Test Case 51 		(Key = 2.2.2.2.2.1.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -573,7 +573,7 @@ Test Case 51 		(Key = 2.2.2.2.2.1.2.2.1.1.)
 
 
 Test Case 52 		(Key = 2.2.2.2.2.1.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -586,7 +586,7 @@ Test Case 52 		(Key = 2.2.2.2.2.1.2.2.1.2.)
 
 
 Test Case 53 		(Key = 2.2.2.2.2.1.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -599,7 +599,7 @@ Test Case 53 		(Key = 2.2.2.2.2.1.3.2.1.1.)
 
 
 Test Case 54 		(Key = 2.2.2.2.2.1.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -612,7 +612,7 @@ Test Case 54 		(Key = 2.2.2.2.2.1.3.2.1.2.)
 
 
 Test Case 55 		(Key = 2.2.2.2.2.2.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -625,7 +625,7 @@ Test Case 55 		(Key = 2.2.2.2.2.2.2.2.1.1.)
 
 
 Test Case 56 		(Key = 2.2.2.2.2.2.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -638,7 +638,7 @@ Test Case 56 		(Key = 2.2.2.2.2.2.2.2.1.2.)
 
 
 Test Case 57 		(Key = 2.2.2.2.2.2.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -651,7 +651,7 @@ Test Case 57 		(Key = 2.2.2.2.2.2.3.2.1.1.)
 
 
 Test Case 58 		(Key = 2.2.2.2.2.2.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  2(eg -b -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -664,7 +664,7 @@ Test Case 58 		(Key = 2.2.2.2.2.2.3.2.1.2.)
 
 
 Test Case 59 		(Key = 2.3.2.1.2.1.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -677,7 +677,7 @@ Test Case 59 		(Key = 2.3.2.1.2.1.2.2.1.1.)
 
 
 Test Case 60 		(Key = 2.3.2.1.2.1.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -690,7 +690,7 @@ Test Case 60 		(Key = 2.3.2.1.2.1.2.2.1.2.)
 
 
 Test Case 61 		(Key = 2.3.2.1.2.1.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -703,7 +703,7 @@ Test Case 61 		(Key = 2.3.2.1.2.1.3.2.1.1.)
 
 
 Test Case 62 		(Key = 2.3.2.1.2.1.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -716,7 +716,7 @@ Test Case 62 		(Key = 2.3.2.1.2.1.3.2.1.2.)
 
 
 Test Case 63 		(Key = 2.3.2.1.2.2.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -729,7 +729,7 @@ Test Case 63 		(Key = 2.3.2.1.2.2.2.2.1.1.)
 
 
 Test Case 64 		(Key = 2.3.2.1.2.2.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -742,7 +742,7 @@ Test Case 64 		(Key = 2.3.2.1.2.2.2.2.1.2.)
 
 
 Test Case 65 		(Key = 2.3.2.1.2.2.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -755,7 +755,7 @@ Test Case 65 		(Key = 2.3.2.1.2.2.3.2.1.1.)
 
 
 Test Case 66 		(Key = 2.3.2.1.2.2.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -768,7 +768,7 @@ Test Case 66 		(Key = 2.3.2.1.2.2.3.2.1.2.)
 
 
 Test Case 67 		(Key = 2.3.2.2.2.1.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -781,7 +781,7 @@ Test Case 67 		(Key = 2.3.2.2.2.1.2.2.1.1.)
 
 
 Test Case 68 		(Key = 2.3.2.2.2.1.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -794,7 +794,7 @@ Test Case 68 		(Key = 2.3.2.2.2.1.2.2.1.2.)
 
 
 Test Case 69 		(Key = 2.3.2.2.2.1.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -807,7 +807,7 @@ Test Case 69 		(Key = 2.3.2.2.2.1.3.2.1.1.)
 
 
 Test Case 70 		(Key = 2.3.2.2.2.1.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -820,7 +820,7 @@ Test Case 70 		(Key = 2.3.2.2.2.1.3.2.1.2.)
 
 
 Test Case 71 		(Key = 2.3.2.2.2.2.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -833,7 +833,7 @@ Test Case 71 		(Key = 2.3.2.2.2.2.2.2.1.1.)
 
 
 Test Case 72 		(Key = 2.3.2.2.2.2.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -846,7 +846,7 @@ Test Case 72 		(Key = 2.3.2.2.2.2.2.2.1.2.)
 
 
 Test Case 73 		(Key = 2.3.2.2.2.2.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -859,7 +859,7 @@ Test Case 73 		(Key = 2.3.2.2.2.2.3.2.1.1.)
 
 
 Test Case 74 		(Key = 2.3.2.2.2.2.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  3(eg -b -f -l)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -872,7 +872,7 @@ Test Case 74 		(Key = 2.3.2.2.2.2.3.2.1.2.)
 
 
 Test Case 75 		(Key = 2.4.2.1.2.1.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -885,7 +885,7 @@ Test Case 75 		(Key = 2.4.2.1.2.1.2.2.1.1.)
 
 
 Test Case 76 		(Key = 2.4.2.1.2.1.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -898,7 +898,7 @@ Test Case 76 		(Key = 2.4.2.1.2.1.2.2.1.2.)
 
 
 Test Case 77 		(Key = 2.4.2.1.2.1.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -911,7 +911,7 @@ Test Case 77 		(Key = 2.4.2.1.2.1.3.2.1.1.)
 
 
 Test Case 78 		(Key = 2.4.2.1.2.1.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -924,7 +924,7 @@ Test Case 78 		(Key = 2.4.2.1.2.1.3.2.1.2.)
 
 
 Test Case 79 		(Key = 2.4.2.1.2.2.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -937,7 +937,7 @@ Test Case 79 		(Key = 2.4.2.1.2.2.2.2.1.1.)
 
 
 Test Case 80 		(Key = 2.4.2.1.2.2.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -950,7 +950,7 @@ Test Case 80 		(Key = 2.4.2.1.2.2.2.2.1.2.)
 
 
 Test Case 81 		(Key = 2.4.2.1.2.2.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -963,7 +963,7 @@ Test Case 81 		(Key = 2.4.2.1.2.2.3.2.1.1.)
 
 
 Test Case 82 		(Key = 2.4.2.1.2.2.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Not Quoted
@@ -976,7 +976,7 @@ Test Case 82 		(Key = 2.4.2.1.2.2.3.2.1.2.)
 
 
 Test Case 83 		(Key = 2.4.2.2.2.1.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -989,7 +989,7 @@ Test Case 83 		(Key = 2.4.2.2.2.1.2.2.1.1.)
 
 
 Test Case 84 		(Key = 2.4.2.2.2.1.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -1002,7 +1002,7 @@ Test Case 84 		(Key = 2.4.2.2.2.1.2.2.1.2.)
 
 
 Test Case 85 		(Key = 2.4.2.2.2.1.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -1015,7 +1015,7 @@ Test Case 85 		(Key = 2.4.2.2.2.1.3.2.1.1.)
 
 
 Test Case 86 		(Key = 2.4.2.2.2.1.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -1028,7 +1028,7 @@ Test Case 86 		(Key = 2.4.2.2.2.1.3.2.1.2.)
 
 
 Test Case 87 		(Key = 2.4.2.2.2.2.2.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -1041,7 +1041,7 @@ Test Case 87 		(Key = 2.4.2.2.2.2.2.2.1.1.)
 
 
 Test Case 88 		(Key = 2.4.2.2.2.2.2.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -1054,7 +1054,7 @@ Test Case 88 		(Key = 2.4.2.2.2.2.2.2.1.2.)
 
 
 Test Case 89 		(Key = 2.4.2.2.2.2.3.2.1.1.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
@@ -1067,7 +1067,7 @@ Test Case 89 		(Key = 2.4.2.2.2.2.3.2.1.1.)
 
 
 Test Case 90 		(Key = 2.4.2.2.2.2.3.2.1.2.)
-   Options Size          :  Not Empty
+   Options Size          :  Valid Input
    Number of Options     :  4(eg -b -f -l -i)
    From String Size      :  Not Empty
    From String Quoting   :  Quoted Not Empty
