@@ -53,8 +53,7 @@ public class BuggyClass {
         // (2) it is possible to create a test suite that achieves 100% branch coverage
         // and does not reveal the fault.
 
-
-        // my answer:
+        // My answer:
         // impossible.
         // A test suite that achieves 100% branch coverage the same test suite will
         // also achieve 100% statement coverage. So if requirement 2 is satisfied, the fault will not be revealed.
