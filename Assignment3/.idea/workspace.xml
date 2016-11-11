@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7de71e16-bff3-4b14-83ad-bcb91999cef7" name="Default" comment="" />
+    <list default="true" id="7de71e16-bff3-4b14-83ad-bcb91999cef7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java" afterPath="$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment6/catpart.txt" afterPath="$PROJECT_DIR$/../Assignment6/catpart.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment6/catpart.txt.tsl" afterPath="$PROJECT_DIR$/../Assignment6/catpart.txt.tsl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../IndividualProject/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../IndividualProject/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../IndividualProject/replace/test/edu/gatech/seclass/replace/MainTest.java" afterPath="$PROJECT_DIR$/../IndividualProject/replace/test/edu/gatech/seclass/replace/MainTest.java" />
+    </list>
     <ignored path="Assignment3.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,8 +32,8 @@
       <file leaf-file-name="MyCustomStringTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,7 +44,7 @@
       <file leaf-file-name="MyCustomString.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomString.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="659">
+            <state relative-caret-position="2025">
               <caret line="183" column="1" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
               <folding>
                 <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
@@ -119,9 +126,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -198,7 +205,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MyCustomStringTest">
+  <component name="RunManager" selected="JUnit.MyCustomStringTest.testCountNumbers3">
     <configuration default="false" name="MyCustomStringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -264,6 +271,32 @@
       <option name="PACKAGE_NAME" value="edu.gatech.seclass" />
       <option name="MAIN_CLASS_NAME" value="edu.gatech.seclass.MyCustomStringTest" />
       <option name="METHOD_NAME" value="testCountNumbers4" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="MyCustomStringTest.testCountNumbers3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="edu.gatech.seclass.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Assignment3" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="edu.gatech.seclass" />
+      <option name="MAIN_CLASS_NAME" value="edu.gatech.seclass.MyCustomStringTest" />
+      <option name="METHOD_NAME" value="testCountNumbers3" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -691,16 +724,18 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="JUnit.MyCustomStringTest" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.MyCustomStringTest.testConvertDigitsToNamesInSubstring2" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.MyCustomStringTest.testCountNumbers4" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.MyCustomStringTest.testCountNumbers3" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.MyCustomStringTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.MyCustomStringTest.testCountNumbers4" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.MyCustomStringTest.testConvertDigitsToNamesInSubstring2" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.MyCustomStringTest.testCountNumbers3" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.MyCustomStringTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.MyCustomStringTest.testCountNumbers4" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.MyCustomStringTest.testConvertDigitsToNamesInSubstring2" />
       </list>
     </recent_temporary>
   </component>
@@ -723,16 +758,11 @@
       <workItem from="1473217943845" duration="609000" />
       <workItem from="1473734606135" duration="89000" />
       <workItem from="1478105515255" duration="2833000" />
+      <workItem from="1478883511309" duration="93000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MyCustomStringTest - 2016.09.06 at 21h 46m 55s.xml">
-      <configuration name="MyCustomStringTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyCustomStringTest - 2016.09.06 at 21h 47m 54s.xml">
-      <configuration name="MyCustomStringTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MyCustomStringTest - 2016.09.06 at 21h 49m 32s.xml">
       <configuration name="MyCustomStringTest" configurationId="JUnit" />
     </history-entry>
@@ -757,9 +787,15 @@
     <history-entry file="MyCustomStringTest - 2016.09.06 at 22h 55m 46s.xml">
       <configuration name="MyCustomStringTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MyCustomStringTest_testCountNumbers3 - 2016.11.11 at 10h 59m 29s.xml">
+      <configuration name="MyCustomStringTest.testCountNumbers3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyCustomStringTest_testCountNumbers3 - 2016.11.11 at 10h 59m 51s.xml">
+      <configuration name="MyCustomStringTest.testCountNumbers3" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20512000" />
+    <option name="totallyTimeSpent" value="20605000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="833" extended-state="0" />
@@ -767,6 +803,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34008098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -787,7 +824,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34008098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -812,6 +848,35 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2025">
+          <caret line="183" column="1" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
+          <folding>
+            <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomStringInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -930,7 +995,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomString.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
+        <state relative-caret-position="2025">
           <caret line="183" column="1" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
           <folding>
             <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
@@ -949,8 +1014,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state relative-caret-position="315">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

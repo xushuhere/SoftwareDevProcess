@@ -41,7 +41,7 @@ public class MyCustomStringTest {
     @Test
     public void testCountNumbers3() {
         mycustomstring.setString("14 134 567");
-        assertEquals(3, mycustomstring.countNumbers());
+        assertEquals("This is not right", 3, mycustomstring.countNumbers());
     }
 
     // This test checks whether method countNumbers suitably throwing the exception
