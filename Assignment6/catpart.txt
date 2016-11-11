@@ -18,7 +18,7 @@ From String Size:
 	Empty.		[error] 
 	Not Empty. 	[property notEmptyFrom]
 
-From String Quoting:
+To String Quoting:
 	Not Quoted.		[if notEmptyFrom]
 	Quoted Not Empty.	[if notEmptyFrom]
 	Quoted empty.		[error][if notEmptyFrom]
@@ -45,7 +45,7 @@ File(s) Size:
 
 File(s) Presence:
 	One Or More Files Not Present.	[error]	[if !emptyFile]
-	File(s) Not Present.	[if !emptyFile][property existFile]
+	File(s) Present.	[if !emptyFile][property existFile]
 
 
 File(s) Accessibility:
