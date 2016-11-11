@@ -238,32 +238,4 @@ public class MainTest {
         assertTrue(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
     }
 
-    @Test
-    public void mainTest6() {
-        String args[] = {"blah",};
-        Main.main(args);
-        assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
-    }
-
-    //Test Case 11 		(Key = 1.0.2.1.2.1.2.2.1.1.)
-    //Options Size          :  Empty
-    //Number of Options     :  <n/a>
-    //From String Size      :  Not Empty
-    //From String Quoting   :  Not Quoted
-    //To String Size        :  Not Empty
-    //From String Quoting   :  Not Quoted
-    //File(s) Size          :  1
-    //File(s) Presence      :  File(s) Not Present
-    //File(s) Accessibility :  File(s) Readable and Writable
-    //Number of Replacement :  0
-
-    @Test
-    public void mainTest7() {
-        String args[] = {"blah",};
-        Main.main(args);
-        assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
-    }
-
-    //
-
 }
