@@ -118,6 +118,7 @@ public class MainTest {
 
         String args[] = {"-i", "Howdy", "Hello", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
         Main.main(args);
+        System.out.println(args);
 
         String expected1 = "Hello Bill,\n" +
                 "This is a test file for the replace utility\n" +
@@ -175,6 +176,7 @@ public class MainTest {
 
         assertEquals("The files differ!", expected1, actual1);
         assertEquals("The files differ!", expected2, actual2);
+
         assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
         assertTrue(Files.exists(Paths.get(inputFile2.getPath() + ".bck")));
     }

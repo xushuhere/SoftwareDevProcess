@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7de71e16-bff3-4b14-83ad-bcb91999cef7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java" afterPath="$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment6/catpart.txt" afterPath="$PROJECT_DIR$/../Assignment6/catpart.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Assignment6/catpart.txt.tsl" afterPath="$PROJECT_DIR$/../Assignment6/catpart.txt.tsl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../IndividualProject/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../IndividualProject/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../IndividualProject/replace/test/edu/gatech/seclass/replace/MainTest.java" afterPath="$PROJECT_DIR$/../IndividualProject/replace/test/edu/gatech/seclass/replace/MainTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../IndividualProject/replace/src/edu/gatech/seclass/replace/Main.java" afterPath="$PROJECT_DIR$/../IndividualProject/replace/src/edu/gatech/seclass/replace/Main.java" />
     </list>
     <ignored path="Assignment3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,43 +24,7 @@
     <favorites_list name="Assignment3" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MyCustomStringTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyCustomString.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomString.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2025">
-              <caret line="183" column="1" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
-              <folding>
-                <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
-                <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyCustomStringInterface.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomStringInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -99,7 +59,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="833" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -126,9 +86,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -185,6 +143,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -759,6 +719,8 @@
       <workItem from="1473734606135" duration="89000" />
       <workItem from="1478105515255" duration="2833000" />
       <workItem from="1478883511309" duration="93000" />
+      <workItem from="1479142851692" duration="526000" />
+      <workItem from="1479321911328" duration="57000" />
     </task>
     <servers />
   </component>
@@ -795,15 +757,14 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20605000" />
+    <option name="totallyTimeSpent" value="21188000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="833" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34008098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -813,7 +774,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928476" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25679544" sideWeight="0.49284253" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25679544" sideWeight="0.49284253" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -824,6 +785,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34008098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -850,6 +812,40 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="method#countNumbers#0;class#MyCustomString#0" expanded="false" />
+            <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomStringInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="20" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
@@ -863,8 +859,13 @@
         <state relative-caret-position="2025">
           <caret line="183" column="1" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
           <folding>
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="method#countNumbers#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -892,8 +893,47 @@
         <state relative-caret-position="2025">
           <caret line="183" column="1" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
           <folding>
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="method#countNumbers#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomStringInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2025">
+          <caret line="183" column="1" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
+          <folding>
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="method#countNumbers#0;class#MyCustomString#0" expanded="false" />
+            <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -921,8 +961,13 @@
         <state relative-caret-position="2025">
           <caret line="183" column="1" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
           <folding>
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="method#countNumbers#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -940,8 +985,13 @@
         <state relative-caret-position="1695">
           <caret line="117" column="56" selection-start-line="117" selection-start-column="56" selection-end-line="117" selection-end-column="56" />
           <folding>
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="method#countNumbers#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -969,8 +1019,13 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="method#countNumbers#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -980,8 +1035,13 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="method#countNumbers#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -995,30 +1055,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomString.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2025">
+        <state relative-caret-position="639">
           <caret line="183" column="1" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
           <folding>
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="method#countNumbers#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#getEveryNthCharacterFromBeginningOrEnd#0;class#MyCustomString#0" expanded="false" />
             <element signature="docComment;method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+            <element signature="method#convertDigitsToNamesInSubstring#0;class#MyCustomString#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/gatech/seclass/MyCustomStringInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+        <state relative-caret-position="300">
+          <caret line="36" column="20" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="20" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/edu/gatech/seclass/MyCustomStringTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

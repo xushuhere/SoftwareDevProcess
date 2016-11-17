@@ -824,9 +824,9 @@ public class MyMainTest {
     assertEquals("The files differ!", expected2, actual2);
     assertEquals("The files differ!", expected3, actual3);
 
-    assertFalse(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
-    assertFalse(Files.exists(Paths.get(inputFile2.getPath() + ".bck")));
-    assertFalse(Files.exists(Paths.get(inputFile3.getPath() + ".bck")));
+    assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
+        assertTrue(Files.exists(Paths.get(inputFile2.getPath() + ".bck")));
+        assertTrue(Files.exists(Paths.get(inputFile3.getPath() + ".bck")));
 }
 
     @Test
