@@ -95,7 +95,7 @@ public class MyMainTest {
     private String getFileContent(String filename) {
         String content = null;
         try {
-            content = new String(Files.readAllBytes(Paths.get(filename)), charset);
+            content = new String(Files.readAllBytes(Paths.get(filename)), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -129,7 +129,7 @@ public class MyMainTest {
         //    Test Case 3  		<error>
         //    From String Quoting :  Quoted empty
         File inputFile1 = myCreateInputFile1();
-        String args[] = {"-b","''", "Hello", "--",inputFile1.getPath()};
+        String args[] = {"-b","\"\"", "Hello", "--",inputFile1.getPath()};
         Main.main(args);
         assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
     }
@@ -202,7 +202,7 @@ public class MyMainTest {
 
 
         String actual1 = getFileContent(inputFile1.getPath());
-        assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
+        assertFalse(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
 
         assertEquals("The files differ!", expected1, actual1);
 
@@ -296,8 +296,8 @@ public class MyMainTest {
 
         String expected = "Howdy Bill,\n" +
                 "This is a test file for the replace utility\n" +
-                "Let's make sure it has at least a test lines\n" +
-                "so that we can create some interesting new cases...\n" +
+                "Let's make sure it has at least a few lines\n" +
+                "so that we can create some interesting test cases...\n" +
                 "And let's say \"howdy bill\" again!";
 
         String actual = getFileContent(inputFile.getPath());
@@ -322,12 +322,12 @@ public class MyMainTest {
         //    Number of Replacement :  >=1
         // test a case option is not given, and one input file, and multiple replacements occurred after the command
         File inputFile = myCreateInputFile1();
-        String args[] = {"Howdy", "'Hello'", "--", inputFile.getPath()};
+        String args[] = {"Howdy", "Hello", "--", inputFile.getPath()};
         Main.main(args);
         String expected = "Hello Bill,\n" +
-                "This is a  file for the replace utility\n" +
+                "This is a test file for the replace utility\n" +
                 "Let's make sure it has at least a few lines\n" +
-                "so that we can create some interesting  cases...\n" +
+                "so that we can create some interesting test cases...\n" +
                 "And let's say \"howdy bill\" again!";
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
