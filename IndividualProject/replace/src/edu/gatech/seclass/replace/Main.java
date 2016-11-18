@@ -86,7 +86,7 @@ public class Main {
             usage();
             return;
         }
-        if (fromStr == "" || fromStr == "\"\"" ) {
+        if (fromStr == "" || fromStr == "\"\"") {
             usage();
             return;
         }
@@ -105,8 +105,11 @@ public class Main {
                     FileWriter fw = new FileWriter(fileName + ".bck");
                     fw.write(content);
                     fw.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+
+                } catch (Exception e) {
+                    int index = fileName.lastIndexOf(File.separator);
+                    String fileStortName = fileName.substring(index + 1);
+                    System.err.println("File "+ fileStortName + " not found");
                 }
             }
         }
@@ -130,8 +133,10 @@ public class Main {
                     content = content.replaceAll(fromStr, toStr);
                     fw.write(content);
                     fw.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    int index = fileName.lastIndexOf(File.separator);
+                    String fileStortName = fileName.substring(index + 1);
+                    System.err.println("File "+ fileStortName + " not found");
                 }
             }
         }
@@ -142,6 +147,9 @@ public class Main {
                 String fileName = fileList.get(m);
                 try {
                     File file = new File(fileName);
+                    String content;
+                    content = new String(Files.readAllBytes(Paths.get(fileName)),
+                            StandardCharsets.UTF_8);
                     BufferedReader reader = new BufferedReader(new FileReader(file));
                     String line = "";//, oldtext = "";
                     List<String> lineList = new ArrayList<>();
@@ -166,16 +174,21 @@ public class Main {
                         br.newLine();
                     }
                     br.write(lineList.get(length - 1));
-
+                    if (content.substring(content.length() - 1) == System.lineSeparator()){
+                        br.newLine();
+                    }
                     br.close();
 
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    int index = fileName.lastIndexOf(File.separator);
+                    String fileStortName = fileName.substring(index + 1);
+                    System.err.println("File "+ fileStortName + " not found");
+
                 }
             }
+
         }
     }
-
 
 
     private static void usage() {
