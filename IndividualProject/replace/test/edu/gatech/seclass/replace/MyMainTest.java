@@ -205,7 +205,7 @@ public class MyMainTest {
 
         assertEquals("The files differ!", expected1, actual1);
 
-        assertFalse(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
+        assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
     }
 
     @Test
@@ -744,10 +744,10 @@ public class MyMainTest {
                 "And let's say \"howdy bill\" again!";
 
         String actual1 = getFileContent(inputFile1.getPath());
+        assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
 
         assertEquals("The files differ!", expected1, actual1);
 
-        assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
     }
 
     @Test

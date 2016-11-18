@@ -1,0 +1,1 @@
+-f is true -i is true -b is true  inputFile.getPath()  xxx

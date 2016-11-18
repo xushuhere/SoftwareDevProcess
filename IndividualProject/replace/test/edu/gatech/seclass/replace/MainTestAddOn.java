@@ -251,6 +251,8 @@ public class MainTestAddOn {
         Main.main(args);
         String expected = getFileContent(inputFile.getPath() + ".bck");
         String actual = getFileContent(inputFile.getPath());
+        assertTrue(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+
         assertEquals("The files differ!", expected, actual);
         assertTrue(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
     }
