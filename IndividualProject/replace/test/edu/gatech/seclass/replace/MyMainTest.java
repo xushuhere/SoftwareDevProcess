@@ -202,10 +202,10 @@ public class MyMainTest {
 
 
         String actual1 = getFileContent(inputFile1.getPath());
+        assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
 
         assertEquals("The files differ!", expected1, actual1);
 
-        assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
     }
 
     @Test

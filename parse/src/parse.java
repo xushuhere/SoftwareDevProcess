@@ -1,5 +1,3 @@
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
@@ -9,18 +7,19 @@ import java.io.FileWriter;
 public class parse {
     public static void main(String[] args){
         String fileName = "temp.txt";
+        FileReader fr;
+        FileWriter fw;
         try {
-            File file = new File(fileName);
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            FileWriter writer = new FileWriter(fileName+".bck");
-            String line = "", content = "";
-            while((line = reader.readLine()) != null)
+            fr = new FileReader(fileName);
+            fw = new FileWriter(fileName+".bck");
+            int  c = fr.read();
+            while(c != -1)
             {
-                content += line + "\r\n";
+                fw.write(c);
+                c =fr.read();
             }
-            reader.close();
-            writer.write(content);
-            writer.close();
+            fr.close();
+            fw.close();
         } catch (Exception e) {//Catch exception if any
         }
     }

@@ -55,24 +55,28 @@ public class Main {
         //backup files before any operations, should be working now
         if (vb) {
             for (int x = 0; x < fileList.size(); x++) {
-                    String fileName = fileList.get(x);
-                    try {
-                        File file = new File(fileName);
-                        BufferedReader reader = new BufferedReader(new FileReader(file));
-                        FileWriter fw = new FileWriter(fileName+".bck");
-                        String line = "", content = "";
-                        while((line = reader.readLine()) != null)
-                        {
-                            content += line + "\r\n";
-                        }
-                        reader.close();
-                        fw.write(content);
-                        fw.close();
-                    } catch (Exception e) {//Catch exception if any
-                        usage();
-                        return;
+                String fileName = fileList.get(x);
+                try {
+                    //File file = new File(fileName);
+                    FileReader fr;
+                    FileWriter fw;
+
+                    fr = new FileReader(fileName);
+                    fw = new FileWriter(fileName + ".bck");
+                    int c = fr.read();
+                    while (c != -1) {
+                        fw.write(c);
+                        c = fr.read();
                     }
+                    fr.close();
+                    fw.close();
+
+                }catch (Exception e) {//Catch exception if any
+                    usage();
+                    return;
                 }
+            }
+        }
 
 
 
@@ -90,25 +94,27 @@ public class Main {
                     BufferedReader reader = new BufferedReader(new FileReader(file));
                     String line = "";//, oldtext = "";
                     List<String> lineList = new ArrayList<>();
-                    int length = 0;
-                    while ((line = reader.readLine()) != null) {
-                        length += 1;
+                    int length= 0;
+                    while((line = reader.readLine()) != null) { length += 1;
                         lineList.add(line);
                         //oldtext += line + "\r\n";
                     }
+
                     reader.close();
                     //FileWriter writer = new FileWriter(fileName);
                     BufferedWriter br = new BufferedWriter(new FileWriter(file));
 
                     String currentLine;
                     if (!vf && !vl) {
-                        for (int b = 0; b < length - 1; b++) {
-                            currentLine = lineList.get(b);
-                            lineList.set(b, currentLine.replaceAll(fromStr, toStr));
-                            //String replacedtext = "blank blank";
-                            // br.write(replacedtext);
+                        for (int b= 0;b < length; b++){
+                            currentLine = lineList.get(b).replaceAll(fromStr, toStr);
+                            lineList.set(b, currentLine);
                         }
-                    } else {
+                        //String replacedtext = oldtext
+                        //String replacedtext = "blank blank";
+                        //br.write(replacedtext);
+                    }
+                    else {
                         if (vf) {
                             String fLine = lineList.get(0);
                             lineList.set(0, fLine.replaceAll(fromStr, toStr));
@@ -118,16 +124,16 @@ public class Main {
                             lineList.set(length - 1, lLine.replaceAll(fromStr, toStr));
                         }
                     }
-                    for (int a = 0; a < length - 1; a++) {
-                        br.write(lineList.get(a));
-                        br.newLine();
-                    }
-                    br.write(lineList.get(length));
+                        for (int a = 0;a <length-1;a++){
+                            br.write(lineList.get(a));
+                            br.newLine();
+                        }
+                        br.write(lineList.get(length-1));
+
 
                     br.close();
 
-                }
-                catch (Exception e) {//Catch exception if any
+                } catch (Exception e) {//Catch exception if any
                     usage();
                     return;
                 }
@@ -135,7 +141,7 @@ public class Main {
         }
 
 
-    }
+
     private static void usage() {
         System.err.println("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- " + "<filename> [<filename>]*" );
     }
