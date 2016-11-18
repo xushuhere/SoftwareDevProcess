@@ -1,4 +1,4 @@
 Shu-Xus-MacBook-Pro:parse shuxu$ pwd
 /Users/shuxu/CompSci/CS6300_SDP/6300Fall16sxu332/parse
 Shu-Xus-MacBook-Pro:parse shuxu$ touch temp.txt
-Shu-Xus-MacBook-Pro:parse shuxu$ 
+Shu-Xus-MacBook-Pro:parse shuxu$

@@ -108,8 +108,8 @@ public class Main {
 
                 } catch (Exception e) {
                     int index = fileName.lastIndexOf(File.separator);
-                    String fileStortName = fileName.substring(index + 1);
-                    System.err.println("File "+ fileStortName + " not found");
+                    String fileShortName = fileName.substring(index + 1);
+                    System.err.println("File "+ fileShortName + " not found");
                 }
             }
         }
@@ -135,8 +135,8 @@ public class Main {
                     fw.close();
                 } catch (Exception e) {
                     int index = fileName.lastIndexOf(File.separator);
-                    String fileStortName = fileName.substring(index + 1);
-                    System.err.println("File "+ fileStortName + " not found");
+                    String fileShortName = fileName.substring(index + 1);
+                    System.err.println("File "+ fileShortName + " not found");
                 }
             }
         }
@@ -174,15 +174,15 @@ public class Main {
                         br.newLine();
                     }
                     br.write(lineList.get(length - 1));
-                    if (content.substring(content.length() - 1) == System.lineSeparator()){
+                    if (content.lastIndexOf(System.lineSeparator())+ 1  == content.length()){
                         br.newLine();
                     }
                     br.close();
 
                 } catch (Exception e) {
                     int index = fileName.lastIndexOf(File.separator);
-                    String fileStortName = fileName.substring(index + 1);
-                    System.err.println("File "+ fileStortName + " not found");
+                    String fileShortName = fileName.substring(index + 1);
+                    System.err.println("File "+ fileShortName + " not found");
 
                 }
             }

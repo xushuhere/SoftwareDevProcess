@@ -9,11 +9,19 @@ import java.nio.file.Paths;
  */
 public class backup {
     public static void main(String [] args){
-        String fileName = "temp4.txt";
+        String fileName = "temp.txt";
         String content;
         try {
             content = new String(Files.readAllBytes(Paths.get(fileName)),
                     StandardCharsets.UTF_8);
+            int x = content.lastIndexOf(System.lineSeparator());
+            System.out.println("The last index of line separator is:");
+            System.out.println(content.substring(content.length() - 1));
+            boolean last = (System.lineSeparator()== "\n");
+            System.out.println(last);
+            System.out.println(x);
+            System.out.println("The total length of the files is :");
+            System.out.println(content.length());
             FileWriter fw = new FileWriter(fileName+".bck_new.txt");
             fw.write(content);
             fw.close();
