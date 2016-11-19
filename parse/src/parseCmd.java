@@ -1,4 +1,3 @@
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,103 +15,48 @@ public class parseCmd {
 
         String fromStr = null;
         String toStr = null;
-        String[] arg2;
-        String arg;
         int pointer = 0;
 
-        String args2[] = {"test", "Test", "--", "inputFile1.getPath()" };
 
         // pinter
         // 0 for options, 1 for fromString (forced),
         // 2 for to String, 3 for "--", 4 and beyond for fileList
 
         //String[] pointer = {"option", "fromString", "toString","--" ,"fileName", *};
-        for (int i = 0; i < args2.length; i++) {
-            arg = args2[i];
+        for (String arg: args){
             if (pointer == 0) {
-                if (arg.equals("-f") && !vf) {
-                    vf = true;
-                    continue;
-                }
-                if (arg.equals("-l") && !vb) {
-                    vl = true;
-                    continue;
-
-                }
-                if (arg.equals("-i") && !vi) {
-                    vi = true;
-                    continue;
-
-                }
-                if (arg.equals("-b") && !vb) {
-                    vb = true;
-                    continue;
-
-                }
-                if (arg.equals("--")) {
-                    pointer += 1;
-                    continue;
-
-                } else if (arg.startsWith("-")) {
-
-                    return;
-                } else {
-                    fromStr = arg;
-                    pointer = 2;
-                    continue;
-
-                }
+                if (arg.equals("-f")) {vf = true;continue;}
+                if (arg.equals("-l")) {vl = true;continue;}
+                if (arg.equals("-i")) {vi = true;continue;}
+                if (arg.equals("-b")) {vb = true;continue;}
+                if (arg.equals("--")) {pointer += 1;continue;}
+                if (arg.startsWith("-") && !arg.equals("-f") && !arg.equals("-l") &&
+                        !arg.equals("-b") &&  !arg.equals("-i")) {usage();return;}
+                if (!arg.startsWith("-") ){fromStr = arg;pointer = 2;continue;}
             }
-            if (pointer == 1) {
-                fromStr = arg;
-                pointer = 2;
-                continue;
+            if (pointer == 1) {fromStr = arg;pointer = 2;continue;}
+            if (pointer == 2) {toStr = arg;pointer = 3;continue;}
+            if (pointer == 3 && arg.equals("--")) {pointer = 4;continue;}
+            if (pointer == 3 && !arg.equals("--")) {fileList.add(arg);pointer = 4;continue;}
+            if (pointer == 4) {fileList.add(arg);continue;}
 
-            }
-            if (pointer == 2) {
-                toStr = arg;
-                pointer = 3;
-                continue;
-
-            }
-            if (pointer == 3 && arg.equals("--")) {
-                pointer = 4;
-                continue;
-
-            }
-            if (pointer == 3 && !arg.equals("--")) {
-                return;
-            }
-            if (pointer == 4) {
-                fileList.add(arg);
-                continue;
-
-            }
         }
-        try {
-            //vf = true;
-            //vi = true;
-            FileWriter writer = new FileWriter("temp2.txt");
-            String line ="";
-            if (vf){ line = line + "-f is true/n";}
-            if (vi) {line = line + " -i is true/n";};
-            if (vl) {line = line + " -l is true/n";};
+        System.out.println(args);
+        System.out.println();
+        System.out.println(vf);
+        System.out.println(vb);
+        System.out.println(vi);
+        System.out.println(vl);
+        System.out.println();
+        System.out.println(fromStr);
+        System.out.println(toStr);
+        System.out.println();
+        System.out.println(fileList);
 
-            if (vb) {line = line + " -b is true/n";};
-            line = line + "The from String is :" + fromStr;
-            line = line + "The to String is :" + toStr;
-
-
-            for (String file: fileList){
-                line = line + "  "+ file;}
-
-            writer.write(line);
-            writer.close();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+    }
 
 
+    private static void usage() {
+        System.err.println("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- " + "<filename> [<filename>]*" );
     }
 }

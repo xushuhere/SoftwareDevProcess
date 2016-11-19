@@ -19,74 +19,37 @@ public class Main {
 
         String fromStr = null;
         String toStr = null;
-        String arg;
         int pointer = 0;
         // pinter
         // 0 for options, 1 for fromString (forced),
         // 2 for to String, 3 for "--", 4 and beyond for fileList
-
         //String[] pointer = {"option", "fromString", "toString","--" ,"fileName", *};
-        for (int i = 0; i < args.length; i++) {
-            arg = args[i];
-            if (pointer == 0) {
-                if (arg.equals("-f")) {
-                    vf = true;
-                    continue;
-                }
-                if (arg.equals("-l")) {
-                    vl = true;
-                    continue;
-                }
-                if (arg.equals("-i")) {
-                    vi = true;
-                    continue;
-                }
-                if (arg.equals("-b")) {
-                    vb = true;
-                    continue;
-                }
-                if (arg.equals("--")) {
-                    pointer += 1;
-                    continue;
-                } else if (arg.startsWith("-")) {
-                    usage();
-                    return;
-                } else {
-                    fromStr = arg;
-                    pointer = 2;
-                    continue;
-                }
-            }
-            if (pointer == 1) {
-                fromStr = arg;
-                pointer = 2;
-                continue;
-            }
-            if (pointer == 2) {
-                toStr = arg;
-                pointer = 3;
-                continue;
-            }
-            if (pointer == 3 && arg.equals("--")) {
-                pointer = 4;
-                continue;
-            }
-            if (pointer == 3 && !arg.equals("--")) {
-                usage();
-                return;
-            }
-            if (pointer == 4) {
-                fileList.add(arg);
-                continue;
-            }
-        }
 
+        if (args.length <3) {usage();return;}
+        for (String arg: args){
+                if (pointer == 0) {
+                    if (arg.equals("-f")) {vf = true;continue;}
+                    if (arg.equals("-l")) {vl = true;continue;}
+                    if (arg.equals("-i")) {vi = true;continue;}
+                    if (arg.equals("-b")) {vb = true;continue;}
+                    if (arg.equals("--")) {pointer += 1;continue;}
+                    if (arg.startsWith("-") && !arg.equals("-f") && !arg.equals("-l") &&
+                    !arg.equals("-b") &&  !arg.equals("-i")) {usage();return;}
+                    if (!arg.startsWith("-") ){fromStr = arg;pointer = 2;continue;}
+                }
+                if (pointer == 1) {fromStr = arg;pointer = 2;continue;}
+                if (pointer == 2) {toStr = arg;pointer = 3;continue;}
+                if (pointer == 3 && arg.equals("--")) {pointer = 4;continue;}
+                if (pointer == 3 && !arg.equals("--")) {usage();return;}
+                if (pointer == 4) {fileList.add(arg);continue;}
+
+        }
 
         if (fileList.size() == 0) {
             usage();
             return;
         }
-        if (fromStr == "" || fromStr == "\"\"") {
+        if (fromStr == "") {
             usage();
             return;
         }
@@ -116,21 +79,22 @@ public class Main {
 
 
         // add regex to fromStr for case not sensentivity
+        String regex = "";
         if (vi) {
-            fromStr = "(?i)" + fromStr;
+             regex = "(?i)";
         }
 
 
         // replace when -f and -l tags are off
         if (!vf && !vl) {
-            for (int k = 0; k < fileList.size(); k++) {
-                String fileName = fileList.get(k);
+            for (String fileName: fileList) {
+                //String fileName = fileList.get(k);
                 String content;
                 try {
                     content = new String(Files.readAllBytes(Paths.get(fileName)),
                             StandardCharsets.UTF_8);
                     FileWriter fw = new FileWriter(fileName);
-                    content = content.replaceAll(fromStr, toStr);
+                    content = content.replaceAll(regex+fromStr, toStr);
                     fw.write(content);
                     fw.close();
                 } catch (Exception e) {
@@ -143,8 +107,8 @@ public class Main {
 
         // replace when either -f or -l is on
         else {
-            for (int m = 0; m < fileList.size(); m++) {
-                String fileName = fileList.get(m);
+            for (String fileName: fileList) {
+                //String fileName = fileList.get(m);
                 try {
                     File file = new File(fileName);
                     String content;
@@ -163,11 +127,19 @@ public class Main {
                     BufferedWriter br = new BufferedWriter(new FileWriter(file));
                     if (vf) {
                         String fLine = lineList.get(0);
-                        lineList.set(0, fLine.replaceAll(fromStr, toStr));
+                        lineList.set(0, fLine.replaceAll(regex+fromStr, toStr));
                     }
+
                     if (vl) {
                         String lLine = lineList.get(length - 1);
-                        lineList.set(length - 1, lLine.replaceAll(fromStr, toStr));
+                        lLine = new StringBuffer(lLine).reverse().toString();
+                        fromStr = new StringBuffer(fromStr).reverse().toString();
+                        toStr = new StringBuffer(toStr).reverse().toString();
+
+                        lLine = lLine.replaceAll(regex+fromStr,toStr);
+                        lLine = new StringBuffer(lLine).reverse().toString();
+                        lineList.set(length - 1, lLine);
+
                     }
                     for (int a = 0; a < length - 1; a++) {
                         br.write(lineList.get(a));

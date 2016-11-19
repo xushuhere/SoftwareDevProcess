@@ -128,21 +128,21 @@ public class MyMainTest {
     public void myMainTest03() throws Exception {
         //    Test Case 3  		<error>
         //    From String Quoting :  Quoted empty
-        File inputFile1 = myCreateInputFile1();
-        String args[] = {"-b","\"\"", "Hello", "--",inputFile1.getPath()};
+        //  Note: command line is processing the quoting there.
+        File inputFile2 = myCreateInputFile1();
+        String args[] = {"-b","", "Hello", "--",inputFile2.getPath()};
         Main.main(args);
         assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
     }
 
     @Test
     public void myMainTest04() throws Exception {
-        //    Test Case 5  		<error>
-        //    To String Size :  Empty
-        //  It is legal to have double quoted ToString "''"
-        File inputFile1 = myCreateInputFile1();
-        String args[] = {"-b","Howdy", "", "--",inputFile1.getPath()};
+        // New test case <error>, no inputFile
+        File inputFile = myCreateInputFile2();
+        inputFile.delete();
+        String args[] = {"ab", "bd", "--", inputFile.getPath()};
         Main.main(args);
-        assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
+        assertEquals("File " + inputFile.getName() + " not found", errStream.toString().trim());
     }
 
     @Test
@@ -160,9 +160,7 @@ public class MyMainTest {
         //     Options Size          :  Empty
         //     Number of Options     :  <n/a>
         //     From String Size      :  Not Empty
-        //     From String Quoting   :  Not Quoted
         //     To String Size        :  Not Empty
-        //     To String Quoting     :  Not Quoted
         //     File(s) Size          :  1
         //     File(s) Presence      :  File(s) Present
         //     File(s) Accessibility :  File(s) Readable and Writable
@@ -282,9 +280,7 @@ public class MyMainTest {
     //    Options Size          :  Empty
     //    Number of Options     :  <n/a>
     //    From String Size      :  Not Empty
-    //    From String Quoting   :  Not Quoted
     //    To String Size        :  Not Empty
-    //    To String Quoting     :  Quoted
     //    File(s) Size          :  1
     //    File(s) Presence      :  File(s) Present
     //    File(s) Accessibility :  File(s) Readable and Writable
@@ -313,9 +309,7 @@ public class MyMainTest {
         //    Options Size          :  Empty
         //    Number of Options     :  <n/a>
         //    From String Size      :  Not Empty
-        //    From String Quoting   :  Not Quoted
         //    To String Size        :  Not Empty
-        //    To String Quoting     :  Quoted
         //    File(s) Size          :  1
         //    File(s) Presence      :  File(s) Present
         //    File(s) Accessibility :  File(s) Readable and Writable
@@ -341,9 +335,7 @@ public class MyMainTest {
         //    Options Size          :  Empty
         //    Number of Options     :  <n/a>
         //    From String Size      :  Not Empty
-        //    From String Quoting   :  Not Quoted
         //    To String Size        :  Not Empty
-        //    To String Quoting     :  Quoted
         //    File(s) Size          :  >1
         //    File(s) Presence      :  File(s) Present
         //    File(s) Accessibility :  File(s) Readable and Writable
@@ -385,28 +377,26 @@ public class MyMainTest {
         // test a case option is not given, and multiple input files, and multiple replacements occurred after the command
         // Test Case 18 		(Key = 1.0.2.1.2.2.3.2.1.2.)
         //   Options Size          :  Empty
-        //   Number of Options     :  <n/a>
+        //   Number of Options     :  -b
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
         //   Number of Replacement :  >=1
         File inputFile1 = myCreateInputFile1();
         File inputFile2 = myCreateInputFile2();
-        String args[] = {"Howdy", "'Hello'", "--", inputFile1.getPath(),inputFile2.getPath()};
+        String args[] = {"-b","Howdy", "Hello", "--", inputFile1.getPath(),inputFile2.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
-                "This a test file for the replace utility\n" +
+                "This is a test file for the replace utility\n" +
                 "Let's make sure it has at least a few lines\n" +
                 "so that we can create some interesting test cases...\n" +
                 "And let's say \"howdy bill\" again!";
 
         String expected2 = "Hello Bill,\n" +
-                "This another test file for the replace utility\n" +
+                "This is another test file for the replace utility\n" +
                 "that contains a list:\n" +
                 "-a) Item 1\n" +
                 "-b) Item 2\n" +
@@ -419,8 +409,8 @@ public class MyMainTest {
         assertEquals("The files differ!", expected1, actual1);
         assertEquals("The files differ!", expected2, actual2);
 
-        assertFalse(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
-        assertFalse(Files.exists(Paths.get(inputFile2.getPath() + ".bck")));
+        assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
+        assertTrue(Files.exists(Paths.get(inputFile2.getPath() + ".bck")));
     }
 
     @Test
@@ -430,16 +420,14 @@ public class MyMainTest {
         //   Options Size          :  Empty
         //   Number of Options     :  <n/a>
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
         //   Number of Replacement :  0
         File inputFile1 = myCreateInputFile1();
         File inputFile2 = myCreateInputFile2();
-        String args[] = {"'Howdy1'", "Hello", "--", inputFile1.getPath(),inputFile2.getPath()};
+        String args[] = {"Howdy1", "Hello", "--", inputFile1.getPath(),inputFile2.getPath()};
         Main.main(args);
 
         String expected1 = "Howdy Bill,\n" +
@@ -457,29 +445,21 @@ public class MyMainTest {
 
     @Test
     public void myMainTest15() throws Exception {
-        // test a case option is not given, and input string quoted, one input file, and multiple replacements occurred after the command
-        // Test Case 20 		(Key = 1.0.2.2.2.1.2.2.1.2.)
-        //   Options Size          :  Empty
-        //   Number of Options     :  <n/a>
-        //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
-        //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
-        //   File(s) Size          :  1
-        //   File(s) Presence      :  File(s) Present
-        //   File(s) Accessibility :  File(s) Readable and Writable
-        //   Number of Replacement :  >=1
+        // test a case option is not given, and input string quoted, one input file, and multiple replacements occurred after the commands
+        // when "--" is give, the "-a" and "-b" is forced to assign for the from String.
         File inputFile2 = myCreateInputFile2();
-        String args[] = {"'Bill'", "Will", "--", inputFile2.getPath()};
-        Main.main(args);
+        String args1[] = {"--","-a", "-1", "--", inputFile2.getPath()};
+        Main.main(args1);
+        String args2[] = {"--","-b", "-2", "--", inputFile2.getPath()};
+        Main.main(args2);
 
-        String expected2 = "Howdy Will,\n" +
+        String expected2 = "Howdy Bill,\n" +
                 "This is another test file for the replace utility\n" +
                 "that contains a list:\n" +
-                "-a) Item 1\n" +
-                "-b) Item 2\n" +
+                "-1) Item 1\n" +
+                "-2) Item 2\n" +
                 "...\n" +
-                "and says \"howdy Will\" twice";
+                "and says \"howdy Bill\" twice";
 
 
         String actual2 = getFileContent(inputFile2.getPath());
@@ -497,9 +477,7 @@ public class MyMainTest {
         //   Options Size          :  Empty
         //   Number of Options     :  <n/a>
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -536,20 +514,11 @@ public class MyMainTest {
 
     @Test
     public void myMainTest17() throws Exception {
-        //Test Case 22 		(Key = 1.0.2.2.2.1.3.2.1.2.)
-        //   Options Size          :  Empty
-        //   Number of Options     :  <n/a>
-        //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
-        //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
-        //   File(s) Size          :  >1
-        //   File(s) Presence      :  File(s) Present
-        //   File(s) Accessibility :  File(s) Readable and Writable
-        //   Number of Replacement :  >=1
+        //
+        //
     File inputFile1 = myCreateInputFile1();
     File inputFile2 = myCreateInputFile2();
-    String args[] = {"'Howdy'", "Hello", "--", inputFile1.getPath(),inputFile2.getPath()};
+    String args[] = {"-f","Howdy", "Hello", "--", inputFile1.getPath(),inputFile2.getPath()};
     Main.main(args);
 
     String expected1 = "Hello Bill,\n" +
@@ -582,9 +551,7 @@ public class MyMainTest {
         //   Options Size          :  Empty
         //   Number of Options     :  <n/a>
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -606,19 +573,10 @@ public class MyMainTest {
 
     @Test
     public void myMainTest19() throws Exception {
-        //Test Case 24 		(Key = 1.0.2.2.2.2.2.2.1.2.)
-        //   Options Size          :  Empty
-        //   Number of Options     :  <n/a>
-        //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
-        //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
-        //   File(s) Size          :  1
-        //   File(s) Presence      :  File(s) Not Present
-        //   File(s) Accessibility :  File(s) Readable and Writable
-        //   Number of Replacement :  >=1
+        //Test repeated option flags
+        // args Replace -f -f Howdy Hello -- fileName
         File inputFile2 = myCreateInputFile2();
-        String args[] = {"'Howdy'", "'Hello'", "--",inputFile2.getPath()};
+        String args[] = {"-f","-f","Howdy", "Hello", "--",inputFile2.getPath()};
         Main.main(args);
 
         String expected2 = "Hello Bill,\n" +
@@ -638,20 +596,12 @@ public class MyMainTest {
 
     @Test
     public void myMainTest20() throws Exception {
-        //Test Case 25 		(Key = 1.0.2.2.2.2.3.2.1.1.)
-        //   Options Size          :  Empty
-        //   Number of Options     :  <n/a>
-        //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
-        //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
-        //   File(s) Size          :  >1
-        //   File(s) Presence      :  File(s) Present
-        //   File(s) Accessibility :  File(s) Readable and Writable
-        //   Number of Replacement :  0
+        //   added "--" before from String, no replacement is done
+        // cmd: -- Howdy1 Hello -- file1 file2
+
         File inputFile1 = myCreateInputFile1();
         File inputFile2 = myCreateInputFile2();
-        String args[] = {"'Howdy1'", "'Hello'", "--", inputFile1.getPath(),inputFile2.getPath()};
+        String args[] = {"--","Howdy1", "Hello", "--", inputFile1.getPath(),inputFile2.getPath()};
         Main.main(args);
 
         String expected1 = "Howdy Bill,\n" +
@@ -680,20 +630,11 @@ public class MyMainTest {
 
     @Test
     public void myMainTest21() throws Exception {
-        //Test Case 26 		(Key = 1.0.2.2.2.2.3.2.1.2.)
-        //   Options Size          :  Empty
-        //   Number of Options     :  <n/a>
-        //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
-        //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
-        //   File(s) Size          :  >1
-        //   File(s) Presence      :  File(s) Present
-        //   File(s) Accessibility :  File(s) Readable and Writable
-        //   Number of Replacement :  >=1
+        //Test three options were given, two files
+        // two options, replacements in both files
         File inputFile1 = myCreateInputFile1();
         File inputFile2 = myCreateInputFile2();
-        String args[] = {"'Howdy'", "'Hello'", "--", inputFile1.getPath(),inputFile2.getPath()};
+        String args[] = {"-f","-i",  "Howdy", "Hello", "--", inputFile1.getPath(),inputFile2.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
@@ -708,7 +649,7 @@ public class MyMainTest {
                 "-a) Item 1\n" +
                 "-b) Item 2\n" +
                 "...\n" +
-                "and says \"howdy Bill\" Twice";
+                "and says \"howdy Bill\" twice";
 
         String actual1 = getFileContent(inputFile1.getPath());
         String actual2 = getFileContent(inputFile2.getPath());
@@ -726,9 +667,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  1(eg -b)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -756,15 +695,13 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  1(eg -b)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
         //   Number of Replacement :  >=1
     File inputFile1 = myCreateInputFile1();
-    String args[] = {"-i","Howdy", "Hello", "--", inputFile1.getPath()};
+    String args[] = {"-i","--","Howdy", "Hello", "--", inputFile1.getPath()};
     Main.main(args);
 
     String expected1 = "Hello Bill,\n" +
@@ -785,9 +722,7 @@ public class MyMainTest {
     //   Options Size          :  Valid Input
     //   Number of Options     :  1(eg -b)
     //   From String Size      :  Not Empty
-    //   From String Quoting   :  Not Quoted
     //   To String Size        :  Not Empty
-    //   From String Quoting   :  Not Quoted
     //   File(s) Size          :  >1
     //   File(s) Presence      :  File(s) Not Present
     //   File(s) Accessibility :  File(s) Readable and Writable
@@ -835,9 +770,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  1(eg -b)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -885,9 +818,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  1(eg -b)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -914,21 +845,10 @@ public class MyMainTest {
 
     @Test
     public void myMainTest27() throws Exception {
-        //Test Case 32 		(Key = 2.1.2.1.2.2.2.2.1.2.)
-        //   Options Size          :  Valid Input
-        //   Number of Options     :  1(eg -b)
-        //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
-        //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
-        //   File(s) Size          :  1
-        //   File(s) Presence      :  File(s) Present
-        //   File(s) Accessibility :  File(s) Readable and Writable
-        //   Number of Replacement :  >=1
-        //
+        //duplicated -i input, 2 replacemnt in the file
         File inputFile1 = myCreateInputFile1();
 
-        String args[] = {"-i", "Howdy", "'Hello'", "--", inputFile1.getPath()};
+        String args[] = {"-i", "-i","--","Howdy", "Hello", "--", inputFile1.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
@@ -952,9 +872,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  1(eg -b)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1003,9 +921,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  1(eg -b)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1014,7 +930,7 @@ public class MyMainTest {
         File inputFile2 = myCreateInputFile2();
         File inputFile3 = myCreateInputFile3();
 
-        String args[] = {"-i", "Howdy", "'Hello'", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
+        String args[] = {"-i","-b", "Howdy", "Hello", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
@@ -1042,9 +958,9 @@ public class MyMainTest {
         assertEquals("The files differ!", expected2, actual2);
         assertEquals("The files differ!", expected3, actual3);
 
-        assertFalse(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
-        assertFalse(Files.exists(Paths.get(inputFile2.getPath() + ".bck")));
-        assertFalse(Files.exists(Paths.get(inputFile3.getPath() + ".bck")));
+        assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
+        assertTrue(Files.exists(Paths.get(inputFile2.getPath() + ".bck")));
+        assertTrue(Files.exists(Paths.get(inputFile3.getPath() + ".bck")));
     }
 
     @Test
@@ -1053,9 +969,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  1(eg -b)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1063,7 +977,7 @@ public class MyMainTest {
         //
         File inputFile1 = myCreateInputFile1();
 
-        String args[] = {"-i", "'Howdy1'", "Hello", "--", inputFile1.getPath()};
+        String args[] = {"-i", "Howdy1", "Hello", "--", inputFile1.getPath()};
         Main.main(args);
 
         String expected1 = "Howdy Bill,\n" +
@@ -1086,9 +1000,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  1(eg -b)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1096,7 +1008,7 @@ public class MyMainTest {
         //
         File inputFile2 = myCreateInputFile2();
 
-        String args[] = {"-b", "'Bill'", "Will", "--", inputFile2.getPath()};
+        String args[] = {"-b", "-f","Bill", "Will", "--", inputFile2.getPath()};
         Main.main(args);
 
 
@@ -1106,7 +1018,7 @@ public class MyMainTest {
                 "-a) Item 1\n" +
                 "-b) Item 2\n" +
                 "...\n" +
-                "and says \"howdy Will\" twice";
+                "and says \"howdy Bill\" twice";
 
 
         String actual2 = getFileContent(inputFile2.getPath());
@@ -1120,11 +1032,9 @@ public class MyMainTest {
     public void myMainTest32() throws Exception {
         //Test Case 37 		(Key = 2.1.2.2.2.1.3.2.1.1.)
         //   Options Size          :  Valid Input
-        //   Number of Options     :  1(eg -b)
+        //   Number of Options     :  1(eg -i)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1173,9 +1083,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  1(eg -b)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1185,7 +1093,7 @@ public class MyMainTest {
         File inputFile2 = myCreateInputFile2();
         File inputFile3 = myCreateInputFile3();
 
-        String args[] = {"-i", "'Howdy'", "Hello", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
+        String args[] = {"-i", "Howdy ", "Hello ", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
@@ -1224,9 +1132,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  1(eg -b)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1234,7 +1140,7 @@ public class MyMainTest {
         //
         File inputFile1 = myCreateInputFile1();
 
-        String args[] = {"-i", "'Howdy1'", "'Hello'", "--", inputFile1.getPath()};
+        String args[] = {"-i", "Howdy1", "Hello", "--", inputFile1.getPath()};
         Main.main(args);
 
         String expected1 = "Howdy Bill,\n" +
@@ -1256,16 +1162,14 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  1(eg -b)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
         //   Number of Replacement :  >=1
         File inputFile1 = myCreateInputFile1();
 
-        String args[] = {"-f", "'Howdy'", "'Hello'", "--", inputFile1.getPath()};
+        String args[] = {"-f", "--", "Howdy", "Hello", "--", inputFile1.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
@@ -1289,9 +1193,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  1(eg -b)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1300,7 +1202,7 @@ public class MyMainTest {
         File inputFile2 = myCreateInputFile2();
         File inputFile3 = myCreateInputFile3();
 
-        String args[] = {"-i", "'Howdy1'", "'Hello'", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
+        String args[] = {"-i", "Howdy1", "Hello", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
         Main.main(args);
 
         String expected1 = "Howdy Bill,\n" +
@@ -1339,9 +1241,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  1(eg -b)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1350,7 +1250,7 @@ public class MyMainTest {
         File inputFile2 = myCreateInputFile2();
         File inputFile3 = myCreateInputFile3();
 
-        String args[] = {"-i", "'Howdy'", "'Hello'", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
+        String args[] = {"-i","--", "Howdy", "Hello", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
@@ -1389,9 +1289,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1420,9 +1318,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1452,9 +1348,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1503,9 +1397,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1554,9 +1446,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1587,9 +1477,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1597,14 +1485,14 @@ public class MyMainTest {
         //
         File inputFile1 = myCreateInputFile1();
 
-        String args[] = {"-i", "-b", "Howdy", "'Hello'", "--", inputFile1.getPath()};
+        String args[] = {"-i", "-b", "-f", "Howdy", "Hello", "--", inputFile1.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
                 "This is a test file for the replace utility\n" +
                 "Let's make sure it has at least a few lines\n" +
                 "so that we can create some interesting test cases...\n" +
-                "And let's say \"Hello bill\" again!";
+                "And let's say \"howdy bill\" again!";
 
         String actual1 = getFileContent(inputFile1.getPath());
 
@@ -1619,9 +1507,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1670,9 +1556,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1682,7 +1566,7 @@ public class MyMainTest {
         File inputFile2 = myCreateInputFile2();
         File inputFile3 = myCreateInputFile3();
 
-        String args[] = {"-i", "-f", "Howdy", "'Hello'", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
+        String args[] = {"-i", "-f","--", "Howdy", "Hello","--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
@@ -1721,9 +1605,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1753,9 +1635,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1763,14 +1643,14 @@ public class MyMainTest {
 
         File inputFile1 = myCreateInputFile1();
 
-        String args[] = {"-i", "-f","'Howdy'", "Hello", "--", inputFile1.getPath()};
+        String args[] = {"-i", "-f","--","Howdy", "Hello", "--", inputFile1.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
                 "This is a test file for the replace utility\n" +
                 "Let's make sure it has at least a few lines\n" +
                 "so that we can create some interesting test cases...\n" +
-                "And let's say \"Hello bill\" again!";
+                "And let's say \"howdy bill\" again!";
 
 
         String actual1 = getFileContent(inputFile1.getPath());
@@ -1786,9 +1666,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1837,9 +1715,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     : Not Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1849,7 +1725,7 @@ public class MyMainTest {
         File inputFile2 = myCreateInputFile2();
         File inputFile3 = myCreateInputFile3();
 
-        String args[] = {"-i", "-b", "'Howdy'", "Hello", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
+        String args[] = {"-b", "-i",  "Howdy", "Hello", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
@@ -1888,9 +1764,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -1916,23 +1790,20 @@ public class MyMainTest {
 
     @Test
     public void myMainTest51() throws Exception {
-        //Test Case 56 		(Key = 2.2.2.2.2.2.2.2.1.2.)
         //   Options Size          :  Valid Input
-        //   Number of Options     :  2(eg -b -l)
+        //   Number of Options     :  -i -f
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
-        //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
+        //   To String Size        :  Empty
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
         //   Number of Replacement :  >=1
         File inputFile1 = myCreateInputFile1();
 
-        String args[] = {"-i", "-f", "'Howdy'", "'Hello'", "--", inputFile1.getPath()};
+        String args[] = {"-i", "-f", "Howdy", "", "--", inputFile1.getPath()};
         Main.main(args);
 
-        String expected1 = "Hello Bill,\n" +
+        String expected1 = " Bill,\n" +
                 "This is a test file for the replace utility\n" +
                 "Let's make sure it has at least a few lines\n" +
                 "so that we can create some interesting test cases...\n" +
@@ -1951,8 +1822,6 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
-        //   To String Size        :  Not Empty
         //   To String Quoting     :  Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
@@ -2002,9 +1871,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  2(eg -b -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Quoted Not Empty
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -2014,7 +1881,7 @@ public class MyMainTest {
         File inputFile2 = myCreateInputFile2();
         File inputFile3 = myCreateInputFile3();
 
-        String args[] = {"-b", "-f", "'Howdy'", "'Hello'", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
+        String args[] = {"-b", "-f", "Howdy", "Hello", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
@@ -2053,9 +1920,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  3(eg -b -f -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -2086,9 +1951,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  3(eg -b -f -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -2118,9 +1981,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  3(eg -b -f -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -2169,9 +2030,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  3(eg -b -f -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Not Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -2181,36 +2040,27 @@ public class MyMainTest {
         File inputFile2 = myCreateInputFile2();
         File inputFile3 = myCreateInputFile3();
 
-        String args[] = {"-i","-f","-l", "Howdy", "Hello", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
+        String args[] = {"-i","-f", "--","Howdy", "Hello", "--", inputFile1.getPath(), inputFile2.getPath(),inputFile3.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
                 "This is a test file for the replace utility\n" +
                 "Let's make sure it has at least a few lines\n" +
                 "so that we can create some interesting test cases...\n" +
-                "And let's say \"Hello bill\" again!";
-        String expected2 = "Hello Bill,\n" +
-                "This is another test file for the replace utility\n" +
-                "that contains a list:\n" +
-                "-a) Item 1\n" +
-                "-b) Item 2\n" +
-                "...\n" +
-                "and says \"Hello Bill\" twice";
+                "And let's say \"howdy bill\" again!";
+
         String expected3 = "Hello Bill, have you learned your abc and 123?\n" +
                 "It is important to know your abc and 123," +
                 "so you should study it\n" +
                 "and then repeat with me: abc and 123";
 
         String actual1 = getFileContent(inputFile1.getPath());
-        String actual2 = getFileContent(inputFile2.getPath());
         String actual3 = getFileContent(inputFile3.getPath());
 
         assertEquals("The files differ!", expected1, actual1);
-        assertEquals("The files differ!", expected2, actual2);
         assertEquals("The files differ!", expected3, actual3);
 
         assertFalse(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
-        assertFalse(Files.exists(Paths.get(inputFile2.getPath() + ".bck")));
         assertFalse(Files.exists(Paths.get(inputFile3.getPath() + ".bck")));
     }
 
@@ -2220,9 +2070,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  3(eg -b -f -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -2252,9 +2100,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  3(eg -b -f -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -2264,7 +2110,7 @@ public class MyMainTest {
         File inputFile2 = myCreateInputFile2();
         File inputFile3 = myCreateInputFile3();
 
-        String args[] = {"-i","-f","-l", "Howdy", "'Hello'", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
+        String args[] = {"-i","-f","-l","-b","Howdy", "Hello", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
         Main.main(args);
 
         String expected1 = "Hello Bill,\n" +
@@ -2272,29 +2118,21 @@ public class MyMainTest {
                 "Let's make sure it has at least a few lines\n" +
                 "so that we can create some interesting test cases...\n" +
                 "And let's say \"Hello bill\" again!";
-        String expected2 = "Hello Bill,\n" +
-                "This is another test file for the replace utility\n" +
-                "that contains a list:\n" +
-                "-a) Item 1\n" +
-                "-b) Item 2\n" +
-                "...\n" +
-                "and says \"Hello Bill\" twice";
+
         String expected3 = "Hello Bill, have you learned your abc and 123?\n" +
                 "It is important to know your abc and 123," +
                 "so you should study it\n" +
                 "and then repeat with me: abc and 123";
 
         String actual1 = getFileContent(inputFile1.getPath());
-        String actual2 = getFileContent(inputFile2.getPath());
         String actual3 = getFileContent(inputFile3.getPath());
 
         assertEquals("The files differ!", expected1, actual1);
-        assertEquals("The files differ!", expected2, actual2);
         assertEquals("The files differ!", expected3, actual3);
 
-        assertFalse(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
-        assertFalse(Files.exists(Paths.get(inputFile2.getPath() + ".bck")));
-        assertFalse(Files.exists(Paths.get(inputFile3.getPath() + ".bck")));
+        assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
+        assertTrue(Files.exists(Paths.get(inputFile2.getPath() + ".bck")));
+        assertTrue(Files.exists(Paths.get(inputFile3.getPath() + ".bck")));
     }
 
     @Test
@@ -2303,9 +2141,7 @@ public class MyMainTest {
         //   Options Size          :  Valid Input
         //   Number of Options     :  3(eg -b -f -l)
         //   From String Size      :  Not Empty
-        //   From String Quoting   :  Not Quoted
         //   To String Size        :  Not Empty
-        //   To String Quoting     :  Quoted
         //   File(s) Size          :  >1
         //   File(s) Presence      :  File(s) Present
         //   File(s) Accessibility :  File(s) Readable and Writable
@@ -2350,330 +2186,3 @@ public class MyMainTest {
     }
 
 }
-
-//Test Case 66 		(Key = 2.3.2.1.2.2.3.2.1.2.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  3(eg -b -f -l)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Not Quoted
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Quoted
-//   File(s) Size          :  >1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  >=1
-//
-//
-//Test Case 67 		(Key = 2.3.2.2.2.1.2.2.1.1.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  3(eg -b -f -l)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   To String Quoting     : Not Quoted
-//   File(s) Size          :  1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  0
-//
-//
-//Test Case 68 		(Key = 2.3.2.2.2.1.2.2.1.2.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  3(eg -b -f -l)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   To String Quoting     : Not Quoted
-//   File(s) Size          :  1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  >=1
-//
-//
-//Test Case 69 		(Key = 2.3.2.2.2.1.3.2.1.1.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  3(eg -b -f -l)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Not Quoted
-//   File(s) Size          :  >1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  0
-//
-//
-//Test Case 70 		(Key = 2.3.2.2.2.1.3.2.1.2.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  3(eg -b -f -l)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Not Quoted
-//   File(s) Size          :  >1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  >=1
-//
-//
-//Test Case 71 		(Key = 2.3.2.2.2.2.2.2.1.1.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  3(eg -b -f -l)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Quoted
-//   File(s) Size          :  1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  0
-//
-//
-//Test Case 72 		(Key = 2.3.2.2.2.2.2.2.1.2.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  3(eg -b -f -l)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Quoted
-//   File(s) Size          :  1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  >=1
-//
-//
-//Test Case 73 		(Key = 2.3.2.2.2.2.3.2.1.1.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  3(eg -b -f -l)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Quoted
-//   File(s) Size          :  >1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  0
-//
-//
-//Test Case 74 		(Key = 2.3.2.2.2.2.3.2.1.2.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  3(eg -b -f -l)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Quoted
-//   File(s) Size          :  >1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  >=1
-//
-//
-//Test Case 75 		(Key = 2.4.2.1.2.1.2.2.1.1.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Not Quoted
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Not Quoted
-//   File(s) Size          :  1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  0
-//
-//
-//Test Case 76 		(Key = 2.4.2.1.2.1.2.2.1.2.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Not Quoted
-//   To String Size        :  Not Empty
-//   To String Quoting     : Not Quoted
-//   File(s) Size          :  1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  >=1
-//
-//
-//Test Case 77 		(Key = 2.4.2.1.2.1.3.2.1.1.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Not Quoted
-//   To String Size        :  Not Empty
-//   To String Quoting     : Not Quoted
-//   File(s) Size          :  >1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  0
-//
-//
-//Test Case 78 		(Key = 2.4.2.1.2.1.3.2.1.2.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Not Quoted
-//   To String Size        :  Not Empty
-//   To String Quoting     : Not Quoted
-//   File(s) Size          :  >1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  >=1
-//
-//
-//Test Case 79 		(Key = 2.4.2.1.2.2.2.2.1.1.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Not Quoted
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Quoted
-//   File(s) Size          :  1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  0
-//
-//
-//Test Case 80 		(Key = 2.4.2.1.2.2.2.2.1.2.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Not Quoted
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Quoted
-//   File(s) Size          :  1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  >=1
-//
-//
-//Test Case 81 		(Key = 2.4.2.1.2.2.3.2.1.1.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Not Quoted
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Quoted
-//   File(s) Size          :  >1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  0
-//
-//
-//Test Case 82 		(Key = 2.4.2.1.2.2.3.2.1.2.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Not Quoted
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Quoted
-//   File(s) Size          :  >1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  >=1
-//
-//
-//Test Case 83 		(Key = 2.4.2.2.2.1.2.2.1.1.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   From String Quoting   :  Not Quoted
-//   File(s) Size          :  1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  0
-//
-//
-//Test Case 84 		(Key = 2.4.2.2.2.1.2.2.1.2.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   From String Quoting   :  Not Quoted
-//   File(s) Size          :  1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  >=1
-//
-//
-//Test Case 85 		(Key = 2.4.2.2.2.1.3.2.1.1.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   From String Quoting   :  Not Quoted
-//   File(s) Size          :  >1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  0
-//
-//
-//Test Case 86 		(Key = 2.4.2.2.2.1.3.2.1.2.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   From String Quoting   :  Not Quoted
-//   File(s) Size          :  >1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  >=1
-//
-//
-//Test Case 87 		(Key = 2.4.2.2.2.2.2.2.1.1.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Quoted
-//   File(s) Size          :  1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  0
-//
-//
-//Test Case 88 		(Key = 2.4.2.2.2.2.2.2.1.2.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Quoted
-//   File(s) Size          :  1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  >=1
-//
-//
-//Test Case 89 		(Key = 2.4.2.2.2.2.3.2.1.1.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Quoted
-//   File(s) Size          :  >1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  0
-//
-//
-//Test Case 90 		(Key = 2.4.2.2.2.2.3.2.1.2.)
-//   Options Size          :  Valid Input
-//   Number of Options     :  4(eg -b -f -l -i)
-//   From String Size      :  Not Empty
-//   From String Quoting   :  Quoted Not Empty
-//   To String Size        :  Not Empty
-//   To String Quoting     :  Quoted
-//   File(s) Size          :  >1
-//   File(s) Presence      :  File(s) Present
-//   File(s) Accessibility :  File(s) Readable and Writable
-//   Number of Replacement :  >=1
-//
-//
-//
