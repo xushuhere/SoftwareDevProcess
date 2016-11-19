@@ -16,7 +16,6 @@ public class Main {
         boolean vl = false;
         boolean vi = false;
         List<String> fileList = new ArrayList<>();
-
         String fromStr = null;
         String toStr = null;
         int pointer = 0;
@@ -42,18 +41,10 @@ public class Main {
                 if (pointer == 3 && arg.equals("--")) {pointer = 4;continue;}
                 if (pointer == 3 && !arg.equals("--")) {usage();return;}
                 if (pointer == 4) {fileList.add(arg);continue;}
-
         }
 
-        if (fileList.size() == 0) {
-            usage();
-            return;
-        }
-        if (fromStr == "") {
-            usage();
-            return;
-        }
-
+        if (fileList.size() == 0) {usage();return;}
+        if (fromStr == "") {usage();return;}
 
         //vb = true;
         //backup files before any operations, should be working now
@@ -61,14 +52,12 @@ public class Main {
             for (int x = 0; x < fileList.size(); x++) {
                 String fileName = fileList.get(x);
                 try {
-                    //File file = new File(fileName);
                     String content;
                     content = new String(Files.readAllBytes(Paths.get(fileName)),
                             StandardCharsets.UTF_8);
                     FileWriter fw = new FileWriter(fileName + ".bck");
                     fw.write(content);
                     fw.close();
-
                 } catch (Exception e) {
                     int index = fileName.lastIndexOf(File.separator);
                     String fileShortName = fileName.substring(index + 1);
@@ -80,15 +69,11 @@ public class Main {
 
         // add regex to fromStr for case not sensentivity
         String regex = "";
-        if (vi) {
-             regex = "(?i)";
-        }
-
+        if (vi) {regex = "(?i)";}
 
         // replace when -f and -l tags are off
         if (!vf && !vl) {
             for (String fileName: fileList) {
-                //String fileName = fileList.get(k);
                 String content;
                 try {
                     content = new String(Files.readAllBytes(Paths.get(fileName)),
@@ -108,14 +93,13 @@ public class Main {
         // replace when either -f or -l is on
         else {
             for (String fileName: fileList) {
-                //String fileName = fileList.get(m);
                 try {
                     File file = new File(fileName);
                     String content;
                     content = new String(Files.readAllBytes(Paths.get(fileName)),
                             StandardCharsets.UTF_8);
                     BufferedReader reader = new BufferedReader(new FileReader(file));
-                    String line = "";//, oldtext = "";
+                    String line = "";
                     List<String> lineList = new ArrayList<>();
                     int length = 0;
                     while ((line = reader.readLine()) != null) {
@@ -123,23 +107,19 @@ public class Main {
                         lineList.add(line);
                     }
                     reader.close();
-                    //FileWriter writer = new FileWriter(fileName);
                     BufferedWriter br = new BufferedWriter(new FileWriter(file));
                     if (vf) {
                         String fLine = lineList.get(0);
                         lineList.set(0, fLine.replaceAll(regex+fromStr, toStr));
                     }
-
                     if (vl) {
                         String lLine = lineList.get(length - 1);
                         lLine = new StringBuffer(lLine).reverse().toString();
                         fromStr = new StringBuffer(fromStr).reverse().toString();
                         toStr = new StringBuffer(toStr).reverse().toString();
-
                         lLine = lLine.replaceAll(regex+fromStr,toStr);
                         lLine = new StringBuffer(lLine).reverse().toString();
                         lineList.set(length - 1, lLine);
-
                     }
                     for (int a = 0; a < length - 1; a++) {
                         br.write(lineList.get(a));
@@ -166,6 +146,5 @@ public class Main {
     private static void usage() {
         System.err.println("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- " + "<filename> [<filename>]*" );
     }
-
 }
 
