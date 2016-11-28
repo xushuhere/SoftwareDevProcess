@@ -21,7 +21,6 @@ public class Main {
         List<String> toStrLst = new ArrayList<>();
         String fromStr, toStr;
         int pointer = 0;
-        // pinter
         // 0 for options, 1 for fromString (forced),
         // 2 for to String, 3 for "--", 4 and beyond for fileList
         //String[] pointer = {"option", "fromString", "toString","--" ,"fileName", *};
