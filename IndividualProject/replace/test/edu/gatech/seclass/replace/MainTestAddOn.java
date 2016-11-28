@@ -52,7 +52,7 @@ public class MainTestAddOn {
     }
 
     private File createInputFile1() throws Exception {
-        File file1 =  createTmpFile();
+        File file1 = createTmpFile();
         FileWriter fileWriter = new FileWriter(file1);
 
         fileWriter.write("Howdy Bill," + System.lineSeparator() +
@@ -66,7 +66,7 @@ public class MainTestAddOn {
     }
 
     private File createInputFile2() throws Exception {
-        File file1 =  createTmpFile();
+        File file1 = createTmpFile();
         FileWriter fileWriter = new FileWriter(file1);
 
         fileWriter.write("Howdy Bill," + System.lineSeparator() +
@@ -82,7 +82,7 @@ public class MainTestAddOn {
     }
 
     private File createInputFile3() throws Exception {
-        File file1 =  createTmpFile();
+        File file1 = createTmpFile();
         FileWriter fileWriter = new FileWriter(file1);
 
         fileWriter.write("Howdy Bill, have you learned your abc and 123?" + System.lineSeparator() +
@@ -149,6 +149,16 @@ public class MainTestAddOn {
         return file;
     }
 
+    private File createInputFile9() throws Exception {
+        File file = createTmpFile();
+        FileWriter fileWriter = new FileWriter(file);
+
+        fileWriter.write("-- -- -- --");
+
+        fileWriter.close();
+        return file;
+    }
+
     private String getFileContent(String filename) {
         String content = null;
         try {
@@ -181,6 +191,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -196,6 +207,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -211,6 +223,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -226,6 +239,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -242,6 +256,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -251,10 +266,9 @@ public class MainTestAddOn {
         Main.main(args);
         String expected = getFileContent(inputFile.getPath() + ".bck");
         String actual = getFileContent(inputFile.getPath());
-        assertTrue(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
-
         assertEquals("The files differ!", expected, actual);
         assertTrue(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -268,6 +282,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -298,6 +313,7 @@ public class MainTestAddOn {
         assertEquals("The files differ!", expected, actual3);
         assertEquals("The files differ!", expected, actual4);
         assertTrue(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -322,6 +338,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -337,6 +354,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -352,6 +370,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -359,8 +378,15 @@ public class MainTestAddOn {
         File inputFile = createInputFile1();
         String args[] = {"-i", "-f", "let's", "Let us", "Let's", "let us", "--", inputFile.getPath()};
         Main.main(args);
-        assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
+        String expected = "Howdy Bill," + System.lineSeparator() +
+                "This is a test file for the replace utility" + System.lineSeparator() +
+                "Let us make sure it has at least a few lines" + System.lineSeparator() +
+                "so that we can create some interesting test cases..." + System.lineSeparator() +
+                "And let us say \"howdy bill\" again!";
+        String actual = getFileContent(inputFile.getPath());
+        assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -382,6 +408,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -389,7 +416,13 @@ public class MainTestAddOn {
         File inputFile = createInputFile7();
         String args[] = {"the goal", "The objective", "-i", "-f", "--", inputFile.getPath()};
         Main.main(args);
-        assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
+        String expected = "The goal here is to replace string \"-f\" with" + System.lineSeparator() +
+                "string \"-f\". Since we may also want to do multiple replacements," + System.lineSeparator() +
+                "we will repeat the two strings here: -f and -f";
+        String actual = getFileContent(inputFile.getPath());
+        assertEquals("The files differ!", expected, actual);
+        assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -403,6 +436,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -416,6 +450,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -429,6 +464,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -442,6 +478,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -454,6 +491,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -465,6 +503,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -552,7 +591,7 @@ public class MainTestAddOn {
         assertEquals("The files differ!", expected3, actual3);
 
         assertEquals("File " + inputFile1.getName() + " not found" + System.lineSeparator() +
-                "File " + inputFile2.getName() + " not found",
+                        "File " + inputFile2.getName() + " not found",
                 errStream.toString().trim());
 
         assertFalse(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
@@ -572,6 +611,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -586,6 +626,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -600,6 +641,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -614,6 +656,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -628,6 +671,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -639,6 +683,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -650,6 +695,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -661,6 +707,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -672,6 +719,7 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
 
     @Test
@@ -683,5 +731,231 @@ public class MainTestAddOn {
         String actual = getFileContent(inputFile.getPath());
         assertEquals("The files differ!", expected, actual);
         assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
     }
+
+    @Test
+    public void mainTest45() throws Exception {
+        File inputFile = createInputFile1();
+        String args[] = {"Howdy", "Hello", "replace", "REPLACE", "sure it", "sure that it", "--", inputFile.getPath()};
+        Main.main(args);
+        String expected = "Hello Bill," + System.lineSeparator() +
+                "This is a test file for the REPLACE utility" + System.lineSeparator() +
+                "Let's make sure that it has at least a few lines" + System.lineSeparator() +
+                "so that we can create some interesting test cases..." + System.lineSeparator() +
+                "And let's say \"howdy bill\" again!";
+        String actual = getFileContent(inputFile.getPath());
+        assertEquals("The files differ!", expected, actual);
+        assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+    }
+
+    @Test
+    public void mainTest46() throws Exception {
+        File inputFile = createInputFile1();
+        String args[] = {"Howdy", "Hello", "Howdy", "Hey", "--", inputFile.getPath()};
+        Main.main(args);
+        String expected = "Hello Bill," + System.lineSeparator() +
+                "This is a test file for the replace utility" + System.lineSeparator() +
+                "Let's make sure it has at least a few lines" + System.lineSeparator() +
+                "so that we can create some interesting test cases..." + System.lineSeparator() +
+                "And let's say \"howdy bill\" again!";
+        String actual = getFileContent(inputFile.getPath());
+        assertEquals("The files differ!", expected, actual);
+        assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+    }
+
+    @Test
+    public void mainTest47() throws Exception {
+        File inputFile = createInputFile1();
+        String args[] = {"-i", "Howdy", "Yo!", "howdy", "hello", "--", inputFile.getPath()};
+        Main.main(args);
+        String expected = "Yo! Bill," + System.lineSeparator() +
+                "This is a test file for the replace utility" + System.lineSeparator() +
+                "Let's make sure it has at least a few lines" + System.lineSeparator() +
+                "so that we can create some interesting test cases..." + System.lineSeparator() +
+                "And let's say \"Yo! bill\" again!";
+        String actual = getFileContent(inputFile.getPath());
+        assertEquals("The files differ!", expected, actual);
+        assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+    }
+
+    @Test
+    public void mainTest48() throws Exception {
+        File inputFile = createInputFile7();
+        String args[] = {"-f", "goal", "objective", "-i", "-f", "--", inputFile.getPath()};
+        Main.main(args);
+        String expected = "The objective here is to replace string \"-f\" with" + System.lineSeparator() +
+                "string \"-f\". Since we may also want to do multiple replacements," + System.lineSeparator() +
+                "we will repeat the two strings here: -i and -f";
+        String actual = getFileContent(inputFile.getPath());
+        assertEquals("The files differ!", expected, actual);
+        assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+    }
+
+    @Test
+    public void mainTest49() throws Exception {
+        File inputFile = createInputFile9();
+        String args[] = {"--", "--", "++", "--", inputFile.getPath()};
+        Main.main(args);
+        String expected = "++ ++ ++ ++";
+        String actual = getFileContent(inputFile.getPath());
+        assertEquals("The files differ!", expected, actual);
+        assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+    }
+
+    @Test
+    public void mainTest50() throws Exception {
+        File inputFile = createInputFile9();
+        String args[] = {"-f", "--", "--", "++", "--", inputFile.getPath()};
+        Main.main(args);
+        String expected = "++ -- -- --";
+        String actual = getFileContent(inputFile.getPath());
+        assertEquals("The files differ!", expected, actual);
+        assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+    }
+
+    @Test
+    public void mainTest51() throws Exception {
+        File inputFile = createInputFile9();
+        String args[] = {"-l", "--", "--", "++", "--", inputFile.getPath()};
+        Main.main(args);
+        String expected = "-- -- -- ++";
+        String actual = getFileContent(inputFile.getPath());
+        assertEquals("The files differ!", expected, actual);
+        assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+    }
+
+    @Test
+    public void mainTest52() throws Exception {
+        File inputFile = createInputFile9();
+        String args[] = {"-f", "-l", "--", "--", "++", "--", inputFile.getPath()};
+        Main.main(args);
+        String expected = "++ -- -- ++";
+        String actual = getFileContent(inputFile.getPath());
+        assertEquals("The files differ!", expected, actual);
+        assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+    }
+
+    @Test
+    public void mainTest53() throws Exception {
+        File inputFile1 = temporaryFolder.newFile("_tmpfile");
+        File inputFile2 = temporaryFolder.newFile("_tmpfile.bck");
+        inputFile1.deleteOnExit();
+        inputFile2.deleteOnExit();
+        FileWriter fileWriter1 = new FileWriter(inputFile1);
+        FileWriter fileWriter2 = new FileWriter(inputFile2);
+        fileWriter1.write("Content of file1");
+        fileWriter2.write("Content of file2");
+        fileWriter1.close();
+        fileWriter2.close();
+
+        String args1[] = {"Content of ", "This is ", "--", inputFile1.getPath()};
+        Main.main(args1);
+        String args2[] = {"Content of ", "", "--", inputFile2.getPath()};
+        Main.main(args2);
+
+        String expected1 = "This is file1";
+        String actual1 = getFileContent(inputFile1.getPath());
+        String expected2 = "file2";
+        String actual2 = getFileContent(inputFile2.getPath());
+
+        assertEquals("The files differ!", expected1, actual1);
+        assertEquals("The files differ!", expected2, actual2);
+        assertTrue(Files.exists(Paths.get(inputFile2.getPath())));
+        assertFalse(Files.exists(Paths.get(inputFile2.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+    }
+
+    @Test
+    public void mainTest54() throws Exception {
+        File inputFile1 = temporaryFolder.newFile("_tmpfile");
+        File inputFile2 = temporaryFolder.newFile("_tmpfile.bck");
+        inputFile1.deleteOnExit();
+        inputFile2.deleteOnExit();
+        FileWriter fileWriter1 = new FileWriter(inputFile1);
+        FileWriter fileWriter2 = new FileWriter(inputFile2);
+        fileWriter1.write("Content of file1");
+        fileWriter2.write("Content of file2");
+        fileWriter1.close();
+        fileWriter2.close();
+
+        String args1[] = {"-b", "Content of ", "This is ", "--", inputFile1.getPath()};
+        Main.main(args1);
+
+        String expected1 = "Content of file1";
+        String actual1 = getFileContent(inputFile1.getPath());
+
+        assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
+        assertEquals("Not performing replace for " + inputFile1.getName() + ": Backup file already exists", errStream.toString().trim());
+    }
+
+    @Test
+    public void mainTest55() throws Exception {
+        File inputFile1 = temporaryFolder.newFile("_tmpfile");
+        inputFile1.deleteOnExit();
+        FileWriter fileWriter1 = new FileWriter(inputFile1);
+        fileWriter1.write("Content of file1");
+        fileWriter1.close();
+
+        String args1[] = {"-b", "Content of ", "This is ", "--", inputFile1.getPath()};
+        Main.main(args1);
+        String args2[] = {"Content of file1", "This is a hack...", "--", inputFile1.getPath() + ".bck"};
+        Main.main(args2);
+
+        String expected1 = "This is file1";
+        String actual1 = getFileContent(inputFile1.getPath());
+        String expected2 = "This is a hack...";
+        String actual2 = getFileContent(inputFile1.getPath() + ".bck");
+
+        assertEquals("The files differ!", expected1, actual1);
+        assertEquals("The files differ!", expected2, actual2);
+        assertTrue(Files.exists(Paths.get(inputFile1.getPath())));
+        assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+    }
+
+    @Test
+    public void mainTest56() throws Exception {
+        File inputFile = temporaryFolder.newFile("_tmpfile.bck");
+        inputFile.deleteOnExit();
+        FileWriter fileWriter = new FileWriter(inputFile);
+        fileWriter.write("Content of file");
+        fileWriter.close();
+
+        String args[] = {"-b", "Content of ", "", "--", inputFile.getPath()};
+        Main.main(args);
+
+        String expected = "file";
+        String actual = getFileContent(inputFile.getPath());
+
+        assertEquals("The files differ!", expected, actual);
+        assertTrue(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+    }
+
+    @Test
+    public void mainTest57() throws Exception {
+        File inputFile = createInputFile1();
+        String args[] = {"-i", "let's", "Let us", "let us", "we will", "--", inputFile
+                .getPath()};
+        Main.main(args);
+        String expected = "Howdy Bill," + System.lineSeparator() +
+                "This is a test file for the replace utility" + System.lineSeparator() +
+                "we will make sure it has at least a few lines" + System.lineSeparator() +
+                "so that we can create some interesting test cases..." + System.lineSeparator() +
+                "And we will say \"howdy bill\" again!";
+        String actual = getFileContent(inputFile.getPath());
+        assertEquals("The files differ!", expected, actual);
+        assertFalse(Files.exists(Paths.get(inputFile.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+    }
+
 }
