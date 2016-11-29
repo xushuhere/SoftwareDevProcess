@@ -24,7 +24,6 @@ public class Main {
         // 0 for options, 1 for fromString (forced),
         // 2 for to String, 3 for "--", 4 and beyond for fileList
         //String[] pointer = {"option", "fromString", "toString","--" ,"fileName", *};
-
         if (args.length < 3) {
             usage();
             return;
@@ -108,33 +107,6 @@ public class Main {
             return;
         }
 
-        //vb = true;
-        //backup files before any operations, should be working now
-        if (vb) {
-            for (int x = 0; x < fileList.size(); x++) {
-                String fileName = fileList.get(x);
-                try {
-                    Path p = Paths.get(fileName);
-                    Path pb = Paths.get(fileName +".bck");
-                    int index = fileName.lastIndexOf(File.separator);
-                    String fileShortName = fileName.substring(index + 1);
-                if (Files.notExists(pb)) {
-                        String content;
-                        content = new String(Files.readAllBytes(p), StandardCharsets.UTF_8);
-                        FileWriter fw = new FileWriter(fileName + ".bck");
-                        fw.write(content);
-                        fw.close();
-                }
-                else{
-                    System.err.println("Not performing replace for " + fileShortName + ": Backup file already exists");
-                }
-                } catch (Exception e) {
-                int index = fileName.lastIndexOf(File.separator);
-                String fileShortName = fileName.substring(index + 1);
-                System.err.println("File " + fileShortName + " not found");
-            }
-            }
-        }
 
         // add regex to fromStr for case not sensentivity
         String regex = "";
@@ -147,38 +119,32 @@ public class Main {
             fromStr = fromStrLst.get(l);
             if (fromStr.equals("")) {usage();return;}
             toStr = toStrLst.get(l);
-
-            // replace when -f and -l tags are off
-            if (!vf && !vl) {
-                for (String fileName : fileList) {
-                    String content;
-                    try {
-                        content = new String(Files.readAllBytes(Paths.get(fileName)),
-                                StandardCharsets.UTF_8);
-                        FileWriter fw = new FileWriter(fileName);
-                        content = content.replaceAll(regex + fromStr, toStr);
-                        fw.write(content);
-                        fw.close();
-                    } catch (Exception e) {
+            for (String fileName : fileList) {
+                try {
+                    if (vb) {// backup files first
+                        Path p = Paths.get(fileName);
+                        Path pb = Paths.get(fileName + ".bck");
                         int index = fileName.lastIndexOf(File.separator);
                         String fileShortName = fileName.substring(index + 1);
-                        System.err.println("File " + fileShortName + " not found");
-                    }
-                }
-            }
-
-            // replace when either -f or -l is on
-            else {
-                for (String fileName : fileList) {
-                    try {
-                        //File file = new File(fileName);
-                        String content;
-                        content = new String(Files.readAllBytes(Paths.get(fileName)),
-                                StandardCharsets.UTF_8);
-                        FileWriter fw = new FileWriter(fileName);
-                        if (vf) {
-                        content = content.replaceFirst(regex + fromStr, toStr);
+                        if (Files.notExists(pb)) {
+                            String content;
+                            content = new String(Files.readAllBytes(p), StandardCharsets.UTF_8);
+                            FileWriter fw = new FileWriter(fileName + ".bck");
+                            fw.write(content);
+                            fw.close();
+                        } else {
+                            System.err.println("Not performing replace for " + fileShortName + ": Backup file already exists");
                         }
+                    }
+
+                    String content = new String(Files.readAllBytes(Paths.get(fileName)),
+                            StandardCharsets.UTF_8);
+                    FileWriter fw = new FileWriter(fileName);
+                    // if none of first or last flag is on
+                    if (!vf && !vl) {content = content.replaceAll(regex + fromStr, toStr);}
+                    // if first or last flag is on
+                    else {
+                        if (vf) {content = content.replaceFirst(regex + fromStr, toStr);}
                         if (vl) {
                             String content_r = new StringBuffer(content).reverse().toString();
                             fromStr = new StringBuffer(fromStr).reverse().toString();
@@ -186,20 +152,23 @@ public class Main {
                             content_r = content_r.replaceFirst(regex + fromStr, toStr);
                             content = new StringBuffer(content_r).reverse().toString();
                         }
-                        fw.write(content);
-                        fw.close();
+                    }
+                    fw.write(content);
+                    fw.close();
 
-                    } catch (Exception e) {
+            }
+
+            catch (Exception e) {
                         int index = fileName.lastIndexOf(File.separator);
                         String fileShortName = fileName.substring(index + 1);
                         System.err.println("File " + fileShortName + " not found");
-
                     }
-                }
-
             }
         }
+
     }
+
+    
 
     private static void usage() {
         System.err.println("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- " + "<filename> [<filename>]*" );
