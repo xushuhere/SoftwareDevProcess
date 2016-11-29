@@ -26,3 +26,11 @@ IndividualProject/D3Task2/compileAndRunTests.bat
 *.sh
 
 *.gradle
+
+*.txt
+
+*.gradle
+
+IndividualProject/D3Task2/result.xml
+
+IndividualProject/D3Task2/template.xml
