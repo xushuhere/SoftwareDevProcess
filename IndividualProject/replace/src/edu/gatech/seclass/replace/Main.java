@@ -134,6 +134,7 @@ public class Main {
                             fw.close();
                         } else {
                             System.err.println("Not performing replace for " + fileShortName + ": Backup file already exists");
+                            continue;
                         }
                     }
 
