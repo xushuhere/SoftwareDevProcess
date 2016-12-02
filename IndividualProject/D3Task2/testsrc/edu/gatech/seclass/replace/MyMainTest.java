@@ -101,6 +101,48 @@ public class MyMainTest {
         fileWriter.close();
         return file;
     }
+    private File myCreateInputFile5() throws Exception {
+        File file = myCreateTmpFile();
+        FileWriter fileWriter = new FileWriter(file);
+
+        fileWriter.write("--, file5");
+
+        fileWriter.close();
+        return file;
+    }
+
+    private File createTmpFile() throws IOException {
+        File tmpfile = temporaryFolder.newFile();
+        tmpfile.deleteOnExit();
+        return tmpfile;
+    }
+    private File createInputFile1() throws Exception {
+        File file1 = createTmpFile();
+        FileWriter fileWriter = new FileWriter(file1);
+
+        fileWriter.write("Howdy Bill," + System.lineSeparator() +
+                "This is a test file for the replace utility" + System.lineSeparator() +
+                "Let's make sure it has at least a few lines" + System.lineSeparator() +
+                "so that we can create some interesting test cases..." + System.lineSeparator() +
+                "And let's say \"howdy bill\" again!");
+
+        fileWriter.close();
+        return file1;
+    }
+    private File createInputFile2() throws Exception {
+        File file1 = createTmpFile();
+        FileWriter fileWriter = new FileWriter(file1);
+        fileWriter.write("Howdy Bill," + System.lineSeparator() +
+                "This is another test file for the replace utility" + System.lineSeparator() +
+                "that contains a list:" + System.lineSeparator() +
+                "-a) Item 1" + System.lineSeparator() +
+                "-b) Item 2" + System.lineSeparator() +
+                "..." + System.lineSeparator() +
+                "and says \"howdy Bill\" twice");
+
+        fileWriter.close();
+        return file1;
+    }
 
     private String getFileContent(String filename) {
         String content = null;
@@ -111,7 +153,6 @@ public class MyMainTest {
         }
         return content;
     }
-
 
     // My test cases
     @Test
@@ -2207,7 +2248,6 @@ public class MyMainTest {
         assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
     }
 
-
     // Type d: when given to the program and an empty from string is given,
     // the program did not handle this right.
     @Test
@@ -2218,19 +2258,15 @@ public class MyMainTest {
         assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
     }
 
-
     // Type d: when empty file names from the args are given to the program
     // an error message should be trigger the error message
     // the program did not handle this right.
     @Test
     public void myMainTest63() throws Exception {
         File inputFile1 = myCreateInputFile1();
-
         String args[] = {"-f", "-l",  "--", "AA", "BB", "--", "", inputFile1.getPath()};
         Main.main(args);
         assertEquals("File " + "" + " not found", errStream.toString().trim());
-        //assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
-
     }
 
     @Test
@@ -2253,42 +2289,175 @@ public class MyMainTest {
 
     @Test
     public void myMainTest66() throws Exception {
-        //Test Case 64 		(Key = 2.3.2.1.2.2.2.2.1.2.)
-        //   Options Size          :  Valid Input
-        //   Number of Options     :  3(eg -b -f -l)
-        //   From String Size      :  Not Empty
-        //   To String Size        :  Not Empty
-        //   File(s) Size          :  1
-        //   File(s) Presence      :  File(s) Present
-        //   File(s) Accessibility :  File(s) Readable and Writable
-        //   Number of Replacement :  >=1
-        //
+        File inputFile1 = temporaryFolder.newFile("_tmpfile");
+        File inputFile2 = temporaryFolder.newFile("_tmpfile.bck");
+        inputFile1.deleteOnExit();
+        inputFile2.deleteOnExit();
+        FileWriter fileWriter1 = new FileWriter(inputFile1);
+        FileWriter fileWriter2 = new FileWriter(inputFile2);
+        fileWriter1.write("Content of file1");
+        fileWriter2.write("Content of file2");
+        fileWriter1.close();
+        fileWriter2.close();
+
+        String args1[] = {"-b", "Content of ", "This is ", "--", inputFile1.getPath()};
+        Main.main(args1);
+
+        String expected1 = "Content of file1";
+        String actual1 = getFileContent(inputFile1.getPath());
+
+        assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
+        assertEquals("Not performing replace for " + inputFile1.getName() + ": Backup file already exists", errStream.toString().trim());
+        //assertEquals("", errStream.toString().trim());
+
+    }
+
+    @Test
+    public void myMainTest67() throws Exception {
         File inputFile1 = myCreateInputFile1();
         File inputFile2 = myCreateInputFile2();
         File inputFile3 = myCreateInputFile3();
 
-        String args[] = {"-i","-i","-f","-l","-b","-f","Howdy", "Hello", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
+        String args[] = {"-i","Howdy", "Hello", "Hello","hello", "--", inputFile1.getPath(), inputFile2.getPath(), inputFile3.getPath()};
         Main.main(args);
 
-        String expected1 = "Hello Bill,\n" +
+        String expected1 = "hello Bill,\n" +
                 "This is a test file for the replace utility\n" +
                 "Let's make sure it has at least a few lines\n" +
                 "so that we can create some interesting test cases...\n" +
-                "And let's say \"Hello bill\" again!";
-
-        String expected3 = "Hello Bill, have you learned your abc and 123?\n" +
+                "And let's say \"hello bill\" again!";
+        String expected2 = "hello Bill,\n" +
+                "This is another test file for the replace utility\n" +
+                "that contains a list:\n" +
+                "-a) Item 1\n" +
+                "-b) Item 2\n" +
+                "...\n" +
+                "and says \"hello Bill\" twice";
+        String expected3 = "hello Bill, have you learned your abc and 123?\n" +
                 "It is important to know your abc and 123," +
                 "so you should study it\n" +
                 "and then repeat with me: abc and 123";
 
         String actual1 = getFileContent(inputFile1.getPath());
+        String actual2 = getFileContent(inputFile2.getPath());
         String actual3 = getFileContent(inputFile3.getPath());
 
         assertEquals("The files differ!", expected1, actual1);
+        assertEquals("The files differ!", expected2, actual2);
+        assertEquals("The files differ!", expected3, actual3);
+
+        assertFalse(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
+        assertFalse(Files.exists(Paths.get(inputFile2.getPath() + ".bck")));
+        assertFalse(Files.exists(Paths.get(inputFile3.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+
+    }
+
+    @Test
+    public void myMainTest68() throws Exception {
+        File inputFile1 = myCreateInputFile1();
+        String args[] = {"--", "Hi", "Hello","hi", "--",inputFile1.getPath()};
+        Main.main(args);
+        assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
+    }
+
+    @Test
+    public void myMainTest69() throws Exception {
+        File inputFile1 = myCreateInputFile5();
+        String args[] = {"--", "Hi", "Hello", "--",inputFile1.getPath()};
+        Main.main(args);
+        String expected1 = "--, file5";
+        String actual1 = getFileContent(inputFile1.getPath());
+        assertEquals("The files differ!", expected1, actual1);
+        assertEquals("", errStream.toString().trim());
+    }
+
+    @Test
+    public void myMainTest70() throws Exception {
+        File inputFile1 = myCreateInputFile1();
+        String args[] = {"-b","-f","-i", "Hi", "Hello","hi", "--",inputFile1.getPath()};
+        Main.main(args);
+        assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
+    }
+
+
+    // Type d: when the backup file is existed, the replacement should just skip that file and
+    // continue the next replacement on the next file.
+    @Test
+    public void myMainTest71() throws Exception {
+        File inputFile1 = temporaryFolder.newFile("_tmpfile1");
+        File inputFile2 = temporaryFolder.newFile("_tmpfile2");
+        File inputFile3 = temporaryFolder.newFile("_tmpfile3");
+        File inputFile4 = temporaryFolder.newFile("_tmpfile2.bck");
+
+        inputFile1.deleteOnExit();
+        inputFile2.deleteOnExit();
+        inputFile3.deleteOnExit();
+        inputFile4.deleteOnExit();
+
+        FileWriter fileWriter1 = new FileWriter(inputFile1);
+        FileWriter fileWriter2 = new FileWriter(inputFile2);
+        FileWriter fileWriter3 = new FileWriter(inputFile3);
+        FileWriter fileWriter4 = new FileWriter(inputFile4);
+        fileWriter1.write("Content of file1");
+        fileWriter2.write("Content of file2");
+        fileWriter3.write("Content of file3");
+        fileWriter4.write("Content of file2");
+
+        fileWriter1.close();
+        fileWriter2.close();
+        fileWriter3.close();
+        fileWriter4.close();
+
+        String args1[] = {"-b", "Content of ", "This is ", "--", inputFile1.getPath(),inputFile2.getPath(),inputFile3.getPath()};
+        Main.main(args1);
+
+        String expected1 = "This is file1";
+        String expected2 = "Content of file2";
+        String expected3 = "This is file3";
+
+        String actual1 = getFileContent(inputFile1.getPath());
+        String actual2 = getFileContent(inputFile2.getPath());
+        String actual3 = getFileContent(inputFile3.getPath());
+        assertEquals("Not performing replace for " + inputFile2.getName() + ": Backup file already exists", errStream.toString().trim());
+
+        assertEquals("The files differ!", expected1, actual1);
+        assertEquals("The files differ!", expected2, actual2);
         assertEquals("The files differ!", expected3, actual3);
 
         assertTrue(Files.exists(Paths.get(inputFile1.getPath() + ".bck")));
         assertTrue(Files.exists(Paths.get(inputFile2.getPath() + ".bck")));
         assertTrue(Files.exists(Paths.get(inputFile3.getPath() + ".bck")));
+        assertEquals("", errStream.toString().trim());
+
+    }
+
+    @Test
+    public void myMainTest72() throws Exception {
+
+        File inputFile = myCreateInputFile5();
+        //String toStr = None;
+        String args[] = { "--", "file5","",  "--",inputFile.getPath()};
+        Main.main(args);
+
+        String expected1 = "--, ";
+        String actual1 = getFileContent(inputFile.getPath());
+        assertEquals("The files differ!", expected1, actual1);
+        //assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
+
+    }
+
+    @Test
+    public void myMainTest74() throws Exception {
+        File inputFile = myCreateInputFile5();
+        //String toStr = None;
+        String args[] = { "--", "--","Hi",  "--",inputFile.getPath()};
+        Main.main(args);
+
+        String expected1 = "Hi, file5";
+        String actual1 = getFileContent(inputFile.getPath());
+        assertEquals("The files differ!", expected1, actual1);
+        //assertEquals("Usage: Replace [-b] [-f] [-l] [-i] <from> <to> -- <filename> [<filename>]*", errStream.toString().trim());
+
     }
 }
